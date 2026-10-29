@@ -1,0 +1,346 @@
+{
+  "id": "flashing-circuit",
+  "title": "Flashing Circuit",
+  "titleAr": "دائرة وميض",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 48",
+  "purpose": "تشغيل مؤشر بشكل وامض",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 760,
+        "y": 30
+      }
+    },
+    {
+      "id": "en",
+      "type": "PB_NO",
+      "label": "Enable",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 40
+      },
+      "signal": "enable"
+    },
+    {
+      "id": "ync",
+      "type": "CONTACT_NC",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 40
+      },
+      "monitors": "Y1"
+    },
+    {
+      "id": "TON",
+      "type": "TON",
+      "label": "TON 0.5s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 40
+      },
+      "signal": "T1",
+      "preset": 500
+    },
+    {
+      "id": "Y1",
+      "type": "COIL",
+      "label": "Lamp",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 580,
+        "y": 40
+      },
+      "signal": "Y1"
+    },
+    {
+      "id": "y1no",
+      "type": "CONTACT_NO",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 160
+      },
+      "monitors": "Y1"
+    },
+    {
+      "id": "TOF",
+      "type": "TOF",
+      "label": "TOF 0.5s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 160
+      },
+      "signal": "T2",
+      "preset": 500
+    },
+    {
+      "id": "en2",
+      "type": "CONTACT_NO",
+      "label": "Enable",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 250
+      },
+      "monitors": "enable"
+    },
+    {
+      "id": "t1no",
+      "type": "CONTACT_NO",
+      "label": "T1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 250
+      },
+      "monitors": "T1"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "en.L"
+    },
+    {
+      "id": "w2",
+      "from": "en.R",
+      "to": "ync.L"
+    },
+    {
+      "id": "w3",
+      "from": "ync.R",
+      "to": "TON.IN"
+    },
+    {
+      "id": "w4",
+      "from": "TON.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "w5",
+      "from": "L1.out",
+      "to": "en2.L"
+    },
+    {
+      "id": "w6",
+      "from": "en2.R",
+      "to": "t1no.L"
+    },
+    {
+      "id": "w7",
+      "from": "t1no.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "w8",
+      "from": "Y1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w9",
+      "from": "L1.out",
+      "to": "y1no.L"
+    },
+    {
+      "id": "w10",
+      "from": "y1no.R",
+      "to": "TOF.IN"
+    },
+    {
+      "id": "w11",
+      "from": "TOF.Q",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "مؤقت التشغيل",
+      "detail": "Enable → NC Y1 → TON",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "en.L"
+    },
+    {
+      "id": "s2",
+      "title": "ملف Y1",
+      "detail": "Enable → T1 → Y1",
+      "wireId": "w5",
+      "from": "L1.out",
+      "to": "en2.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "enable",
+        "label": "Enable",
+        "kind": "toggle"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Y1",
+        "label": "Y1",
+        "kind": "coil"
+      },
+      {
+        "id": "T1",
+        "label": "T1",
+        "kind": "timer"
+      },
+      {
+        "id": "T2",
+        "label": "T2",
+        "kind": "timer"
+      }
+    ],
+    "tickMs": 50,
+    "description": "الخرج يومض طالما Enable مفعّل."
+  },
+  "referenceImage": "/refs/flashing-circuit.png"
+}

@@ -1,0 +1,447 @@
+{
+  "id": "store-light-with-motion-detector-10-min-timer",
+  "title": "Store Light + Motion + 10min",
+  "titleAr": "إضاءة محل مع حركة ومؤقت 10 دقائق",
+  "sourceFile": "4 - State-Based Design.ppt",
+  "page": "شريحة 9-12",
+  "purpose": "تشغيل بالزر أو الحركة؛ إطفاء بعد 10 دقائق بلا حركة",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 800,
+        "y": 30
+      }
+    },
+    {
+      "id": "pb",
+      "type": "PB_NO",
+      "label": "PB",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 40
+      },
+      "signal": "PB"
+    },
+    {
+      "id": "md",
+      "type": "SENSOR",
+      "label": "MD",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 260,
+        "y": 40
+      },
+      "signal": "MD"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "L",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 120
+      },
+      "monitors": "L"
+    },
+    {
+      "id": "toffnc",
+      "type": "CONTACT_NC",
+      "label": "T1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 80
+      },
+      "monitors": "T1"
+    },
+    {
+      "id": "L",
+      "type": "LAMP",
+      "label": "L",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 620
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 80
+      },
+      "signal": "L"
+    },
+    {
+      "id": "lon",
+      "type": "CONTACT_NO",
+      "label": "L",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 220
+      },
+      "monitors": "L"
+    },
+    {
+      "id": "mdnc",
+      "type": "CONTACT_NC",
+      "label": "MD",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 220
+      },
+      "monitors": "MD"
+    },
+    {
+      "id": "pb2",
+      "type": "CONTACT_NO",
+      "label": "PB",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 220
+      },
+      "monitors": "PB"
+    },
+    {
+      "id": "TON",
+      "type": "TON",
+      "label": "TON 10min",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 320
+      },
+      "signal": "T1",
+      "preset": 600000
+    },
+    {
+      "id": "ln2",
+      "type": "CONTACT_NO",
+      "label": "L",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 320
+      },
+      "monitors": "L"
+    },
+    {
+      "id": "mdn2",
+      "type": "CONTACT_NC",
+      "label": "MD",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 320
+      },
+      "monitors": "MD"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "pb.L"
+    },
+    {
+      "id": "a2",
+      "from": "L1.out",
+      "to": "md.L"
+    },
+    {
+      "id": "a3",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "a4",
+      "from": "pb.R",
+      "to": "toffnc.L"
+    },
+    {
+      "id": "a5",
+      "from": "md.R",
+      "to": "toffnc.L"
+    },
+    {
+      "id": "a6",
+      "from": "seal.R",
+      "to": "toffnc.L"
+    },
+    {
+      "id": "a7",
+      "from": "toffnc.R",
+      "to": "L.L"
+    },
+    {
+      "id": "a8",
+      "from": "L.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "b1",
+      "from": "L1.out",
+      "to": "ln2.L"
+    },
+    {
+      "id": "b2",
+      "from": "ln2.R",
+      "to": "mdn2.L"
+    },
+    {
+      "id": "b3",
+      "from": "mdn2.R",
+      "to": "TON.IN"
+    },
+    {
+      "id": "b4",
+      "from": "TON.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "c1",
+      "from": "L1.out",
+      "to": "lon.L"
+    },
+    {
+      "id": "c2",
+      "from": "lon.R",
+      "to": "mdnc.L"
+    },
+    {
+      "id": "c3",
+      "from": "L1.out",
+      "to": "pb2.L"
+    },
+    {
+      "id": "c4",
+      "from": "pb2.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "c5",
+      "from": "mdnc.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "تشغيل",
+      "detail": "PB أو MD أو قفل L مع !T1 يشغّل L",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "pb.L"
+    },
+    {
+      "id": "s2",
+      "title": "مؤقت الإطفاء",
+      "detail": "L و !MD يشغّل TON 10min",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "ln2.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "PB",
+        "label": "PB",
+        "kind": "momentary"
+      },
+      {
+        "id": "MD",
+        "label": "Motion",
+        "kind": "toggle"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "L",
+        "label": "Light",
+        "kind": "lamp"
+      },
+      {
+        "id": "T1",
+        "label": "T1",
+        "kind": "timer"
+      }
+    ],
+    "tickMs": 100,
+    "description": "للتجربة السريعة اعتبر المؤقت طويلاً؛ MD يعيد الزمن."
+  },
+  "referenceImage": "/refs/store-light-with-motion-detector-10-min-timer.png"
+}

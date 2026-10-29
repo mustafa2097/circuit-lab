@@ -1,0 +1,568 @@
+{
+  "id": "motor-fwdrev-with-sensors-abx-and-cr",
+  "title": "Motor Fwd/Rev with A,B,X",
+  "titleAr": "محرك مع حساسات A/B/X",
+  "sourceFile": "6 - General Questions.pdf",
+  "page": "صفحة 3 / Q7",
+  "purpose": "أمامي/خلفي مع حساسات وتعشيق",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 820,
+        "y": 20
+      }
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 40
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 40
+      },
+      "signal": "start"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 120
+      },
+      "monitors": "CR"
+    },
+    {
+      "id": "CR",
+      "type": "COIL",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 80
+      },
+      "signal": "CR"
+    },
+    {
+      "id": "G",
+      "type": "LAMP",
+      "label": "G",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 80
+      },
+      "signal": "G"
+    },
+    {
+      "id": "crG",
+      "type": "CONTACT_NO",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 680
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 160
+      },
+      "monitors": "CR"
+    },
+    {
+      "id": "A",
+      "type": "SENSOR",
+      "label": "A",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 260
+      },
+      "signal": "A"
+    },
+    {
+      "id": "X",
+      "type": "SENSOR",
+      "label": "X",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 260
+      },
+      "signal": "X"
+    },
+    {
+      "id": "KrNc",
+      "type": "CONTACT_NC",
+      "label": "Kr",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 260
+      },
+      "monitors": "Kr"
+    },
+    {
+      "id": "OL",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 520,
+        "y": 260
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "Kf",
+      "type": "COIL",
+      "label": "Kf",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 680,
+        "y": 260
+      },
+      "signal": "Kf"
+    },
+    {
+      "id": "B",
+      "type": "SENSOR",
+      "label": "B",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 400
+      },
+      "signal": "B"
+    },
+    {
+      "id": "KfNc",
+      "type": "CONTACT_NC",
+      "label": "Kf",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 400
+      },
+      "monitors": "Kf"
+    },
+    {
+      "id": "Kr",
+      "type": "COIL",
+      "label": "Kr",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 400
+      },
+      "signal": "Kr"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "a2",
+      "from": "stop.R",
+      "to": "start.L"
+    },
+    {
+      "id": "a3",
+      "from": "stop.R",
+      "to": "seal.L"
+    },
+    {
+      "id": "a4",
+      "from": "start.R",
+      "to": "CR.L"
+    },
+    {
+      "id": "a5",
+      "from": "seal.R",
+      "to": "CR.L"
+    },
+    {
+      "id": "a6",
+      "from": "CR.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "g1",
+      "from": "L1.out",
+      "to": "crG.L"
+    },
+    {
+      "id": "g2",
+      "from": "crG.R",
+      "to": "G.L"
+    },
+    {
+      "id": "g3",
+      "from": "G.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "f1",
+      "from": "L1.out",
+      "to": "A.L"
+    },
+    {
+      "id": "f2",
+      "from": "A.R",
+      "to": "X.L"
+    },
+    {
+      "id": "f3",
+      "from": "X.R",
+      "to": "KrNc.L"
+    },
+    {
+      "id": "f4",
+      "from": "KrNc.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "f5",
+      "from": "OL.R",
+      "to": "Kf.L"
+    },
+    {
+      "id": "f6",
+      "from": "Kf.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "r1",
+      "from": "L1.out",
+      "to": "B.L"
+    },
+    {
+      "id": "r2",
+      "from": "B.R",
+      "to": "KfNc.L"
+    },
+    {
+      "id": "r3",
+      "from": "KfNc.R",
+      "to": "Kr.L"
+    },
+    {
+      "id": "r4",
+      "from": "Kr.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "CR",
+      "detail": "Start/Stop → CR و G",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "s2",
+      "title": "Kf",
+      "detail": "A و X و !Kr و OL → Kf",
+      "wireId": "f1",
+      "from": "L1.out",
+      "to": "A.L"
+    },
+    {
+      "id": "s3",
+      "title": "Kr",
+      "detail": "B و !Kf → Kr",
+      "wireId": "r1",
+      "from": "L1.out",
+      "to": "B.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "A",
+        "label": "A",
+        "kind": "toggle"
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "kind": "toggle"
+      },
+      {
+        "id": "X",
+        "label": "X",
+        "kind": "toggle",
+        "default": true
+      },
+      {
+        "id": "OL",
+        "label": "OL",
+        "kind": "toggle",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "CR",
+        "label": "CR",
+        "kind": "coil"
+      },
+      {
+        "id": "Kf",
+        "label": "Kf",
+        "kind": "coil"
+      },
+      {
+        "id": "Kr",
+        "label": "Kr",
+        "kind": "coil"
+      },
+      {
+        "id": "G",
+        "label": "G",
+        "kind": "lamp"
+      }
+    ],
+    "tickMs": 50,
+    "description": "الحساسات تحدد اتجاه التشغيل مع التعشيق."
+  },
+  "referenceImage": "/refs/motor-fwdrev-with-sensors-abx-and-cr.png"
+}

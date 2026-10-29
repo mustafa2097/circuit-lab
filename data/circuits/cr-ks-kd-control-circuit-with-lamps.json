@@ -1,0 +1,588 @@
+{
+  "id": "cr-ks-kd-control-circuit-with-lamps",
+  "title": "CR / Ks / Kd Control",
+  "titleAr": "تحكم CR و Ks و Kd",
+  "sourceFile": "6 - General Questions.pdf",
+  "page": "صفحة 2 / Q5",
+  "purpose": "تحكم متداخل بريليهات ومؤشرات",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 800,
+        "y": 20
+      }
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 40
+      },
+      "signal": "start"
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 260,
+        "y": 80
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 140
+      },
+      "monitors": "CR"
+    },
+    {
+      "id": "OL",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 80
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "CR",
+      "type": "COIL",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 80
+      },
+      "signal": "CR"
+    },
+    {
+      "id": "cr1",
+      "type": "CONTACT_NO",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 220
+      },
+      "monitors": "CR"
+    },
+    {
+      "id": "C",
+      "type": "SENSOR",
+      "label": "C",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 220
+      },
+      "signal": "C"
+    },
+    {
+      "id": "Ks",
+      "type": "COIL",
+      "label": "Ks",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 220
+      },
+      "signal": "Ks"
+    },
+    {
+      "id": "cr2",
+      "type": "CONTACT_NO",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 360
+      },
+      "monitors": "CR"
+    },
+    {
+      "id": "kdnc",
+      "type": "CONTACT_NC",
+      "label": "Kd",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 360
+      },
+      "monitors": "Kd"
+    },
+    {
+      "id": "Kd",
+      "type": "COIL",
+      "label": "Kd",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 360
+      },
+      "signal": "Kd"
+    },
+    {
+      "id": "R",
+      "type": "LAMP",
+      "label": "R",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 600,
+        "y": 220
+      },
+      "signal": "R"
+    },
+    {
+      "id": "G",
+      "type": "LAMP",
+      "label": "G",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 600,
+        "y": 360
+      },
+      "signal": "G"
+    },
+    {
+      "id": "ksG",
+      "type": "CONTACT_NO",
+      "label": "Ks",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 360
+      },
+      "monitors": "Ks"
+    },
+    {
+      "id": "kdR",
+      "type": "CONTACT_NO",
+      "label": "Kd",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 220
+      },
+      "monitors": "Kd"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "a2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "a3",
+      "from": "start.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a4",
+      "from": "seal.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a5",
+      "from": "stop.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "a6",
+      "from": "OL.R",
+      "to": "CR.L"
+    },
+    {
+      "id": "a7",
+      "from": "CR.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "b1",
+      "from": "L1.out",
+      "to": "cr1.L"
+    },
+    {
+      "id": "b2",
+      "from": "cr1.R",
+      "to": "C.L"
+    },
+    {
+      "id": "b3",
+      "from": "C.R",
+      "to": "Ks.L"
+    },
+    {
+      "id": "b4",
+      "from": "Ks.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "c1",
+      "from": "L1.out",
+      "to": "cr2.L"
+    },
+    {
+      "id": "c2",
+      "from": "cr2.R",
+      "to": "kdnc.L"
+    },
+    {
+      "id": "c3",
+      "from": "kdnc.R",
+      "to": "Kd.L"
+    },
+    {
+      "id": "c4",
+      "from": "Kd.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "d1",
+      "from": "L1.out",
+      "to": "ksG.L"
+    },
+    {
+      "id": "d2",
+      "from": "ksG.R",
+      "to": "G.L"
+    },
+    {
+      "id": "d3",
+      "from": "G.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "d4",
+      "from": "L1.out",
+      "to": "kdR.L"
+    },
+    {
+      "id": "d5",
+      "from": "kdR.R",
+      "to": "R.L"
+    },
+    {
+      "id": "d6",
+      "from": "R.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "CR",
+      "detail": "Start/Stop/OL → CR",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "s2",
+      "title": "Ks/Kd",
+      "detail": "مسارات Ks و Kd مع مؤشرات",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "cr1.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "kind": "toggle"
+      },
+      {
+        "id": "OL",
+        "label": "OL",
+        "kind": "toggle",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "CR",
+        "label": "CR",
+        "kind": "coil"
+      },
+      {
+        "id": "Ks",
+        "label": "Ks",
+        "kind": "coil"
+      },
+      {
+        "id": "Kd",
+        "label": "Kd",
+        "kind": "coil"
+      },
+      {
+        "id": "G",
+        "label": "G",
+        "kind": "lamp"
+      },
+      {
+        "id": "R",
+        "label": "R",
+        "kind": "lamp"
+      }
+    ],
+    "tickMs": 50,
+    "description": "شغّل CR ثم راقب Ks/Kd حسب C."
+  },
+  "referenceImage": "/refs/cr-ks-kd-control-circuit-with-lamps.png"
+}

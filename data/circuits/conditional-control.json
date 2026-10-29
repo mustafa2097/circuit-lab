@@ -1,0 +1,176 @@
+{
+  "id": "conditional-control",
+  "title": "Conditional Control",
+  "titleAr": "تحكم شرطي",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 43",
+  "purpose": "تشغيل الخرج عند تحقق شرطين معاً",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 40
+      },
+      "targetPosition": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 700,
+        "y": 80
+      }
+    },
+    {
+      "id": "a",
+      "type": "PB_NO",
+      "label": "A",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 80
+      },
+      "signal": "A"
+    },
+    {
+      "id": "b",
+      "type": "PB_NO",
+      "label": "B",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 80
+      },
+      "signal": "B"
+    },
+    {
+      "id": "Y1",
+      "type": "COIL",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 80
+      },
+      "signal": "Y1"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "a.L"
+    },
+    {
+      "id": "w2",
+      "from": "a.R",
+      "to": "b.L"
+    },
+    {
+      "id": "w3",
+      "from": "b.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "w4",
+      "from": "Y1.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "سلسل A و B",
+      "detail": "L1 → A → B → Y1 → L2",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "a.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "A",
+        "label": "A",
+        "kind": "toggle"
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "kind": "toggle"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Y1",
+        "label": "Y1",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "Y1 يعمل فقط إذا A و B مغلقان."
+  },
+  "referenceImage": "/refs/conditional-control.png"
+}

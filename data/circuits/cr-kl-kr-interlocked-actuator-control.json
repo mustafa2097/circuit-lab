@@ -1,0 +1,492 @@
+{
+  "id": "cr-kl-kr-interlocked-actuator-control",
+  "title": "CR / KL / KR Interlock",
+  "titleAr": "تعشيق KL و KR",
+  "sourceFile": "6 - General Questions.pdf",
+  "page": "صفحة 5 / Q12",
+  "purpose": "مشغلات متعاشقة مع CR",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 800,
+        "y": 20
+      }
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 40
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 40
+      },
+      "signal": "start"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 120
+      },
+      "monitors": "CR"
+    },
+    {
+      "id": "CR",
+      "type": "COIL",
+      "label": "CR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 80
+      },
+      "signal": "CR"
+    },
+    {
+      "id": "C",
+      "type": "SENSOR",
+      "label": "C",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 220
+      },
+      "signal": "C"
+    },
+    {
+      "id": "A",
+      "type": "SENSOR",
+      "label": "A",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 220
+      },
+      "signal": "A"
+    },
+    {
+      "id": "KrNc",
+      "type": "CONTACT_NC",
+      "label": "KR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 220
+      },
+      "monitors": "KR"
+    },
+    {
+      "id": "KL",
+      "type": "COIL",
+      "label": "KL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 540,
+        "y": 220
+      },
+      "signal": "KL"
+    },
+    {
+      "id": "D",
+      "type": "SENSOR",
+      "label": "D",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 360
+      },
+      "signal": "D"
+    },
+    {
+      "id": "B",
+      "type": "SENSOR",
+      "label": "B",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 360
+      },
+      "signal": "B"
+    },
+    {
+      "id": "KlNc",
+      "type": "CONTACT_NC",
+      "label": "KL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 360
+      },
+      "monitors": "KL"
+    },
+    {
+      "id": "KR",
+      "type": "COIL",
+      "label": "KR",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 540,
+        "y": 360
+      },
+      "signal": "KR"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "a2",
+      "from": "stop.R",
+      "to": "start.L"
+    },
+    {
+      "id": "a3",
+      "from": "stop.R",
+      "to": "seal.L"
+    },
+    {
+      "id": "a4",
+      "from": "start.R",
+      "to": "CR.L"
+    },
+    {
+      "id": "a5",
+      "from": "seal.R",
+      "to": "CR.L"
+    },
+    {
+      "id": "a6",
+      "from": "CR.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "b1",
+      "from": "L1.out",
+      "to": "C.L"
+    },
+    {
+      "id": "b2",
+      "from": "C.R",
+      "to": "A.L"
+    },
+    {
+      "id": "b3",
+      "from": "A.R",
+      "to": "KrNc.L"
+    },
+    {
+      "id": "b4",
+      "from": "KrNc.R",
+      "to": "KL.L"
+    },
+    {
+      "id": "b5",
+      "from": "KL.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "c1",
+      "from": "L1.out",
+      "to": "D.L"
+    },
+    {
+      "id": "c2",
+      "from": "D.R",
+      "to": "B.L"
+    },
+    {
+      "id": "c3",
+      "from": "B.R",
+      "to": "KlNc.L"
+    },
+    {
+      "id": "c4",
+      "from": "KlNc.R",
+      "to": "KR.L"
+    },
+    {
+      "id": "c5",
+      "from": "KR.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "CR",
+      "detail": "Start/Stop → CR",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "s2",
+      "title": "KL/KR",
+      "detail": "مساران مع تعشيق متبادل",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "C.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "A",
+        "label": "A",
+        "kind": "toggle"
+      },
+      {
+        "id": "B",
+        "label": "B",
+        "kind": "toggle"
+      },
+      {
+        "id": "C",
+        "label": "C",
+        "kind": "toggle",
+        "default": true
+      },
+      {
+        "id": "D",
+        "label": "D",
+        "kind": "toggle",
+        "default": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "CR",
+        "label": "CR",
+        "kind": "coil"
+      },
+      {
+        "id": "KL",
+        "label": "KL",
+        "kind": "coil"
+      },
+      {
+        "id": "KR",
+        "label": "KR",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "KL و KR لا يعملان معاً."
+  },
+  "referenceImage": "/refs/cr-kl-kr-interlocked-actuator-control.png"
+}

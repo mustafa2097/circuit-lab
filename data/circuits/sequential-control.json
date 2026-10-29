@@ -1,0 +1,252 @@
+{
+  "id": "sequential-control",
+  "title": "Sequential Control",
+  "titleAr": "تحكم تتابعي",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 44",
+  "purpose": "خطوة بعد خطوة",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 760,
+        "y": 30
+      }
+    },
+    {
+      "id": "s1",
+      "type": "PB_NO",
+      "label": "Start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 40
+      },
+      "signal": "start"
+    },
+    {
+      "id": "Y1",
+      "type": "COIL",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 40
+      },
+      "signal": "Y1"
+    },
+    {
+      "id": "y1no",
+      "type": "CONTACT_NO",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 160
+      },
+      "monitors": "Y1"
+    },
+    {
+      "id": "s2",
+      "type": "PB_NO",
+      "label": "Next",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 160
+      },
+      "signal": "next"
+    },
+    {
+      "id": "Y2",
+      "type": "COIL",
+      "label": "Y2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 640
+      },
+      "targetPosition": {
+        "x": 460,
+        "y": 160
+      },
+      "signal": "Y2"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "s1.L"
+    },
+    {
+      "id": "w2",
+      "from": "s1.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "w3",
+      "from": "Y1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w4",
+      "from": "L1.out",
+      "to": "y1no.L"
+    },
+    {
+      "id": "w5",
+      "from": "y1no.R",
+      "to": "s2.L"
+    },
+    {
+      "id": "w6",
+      "from": "s2.R",
+      "to": "Y2.L"
+    },
+    {
+      "id": "w7",
+      "from": "Y2.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "الخطوة 1",
+      "detail": "Start يشغّل Y1",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "s1.L"
+    },
+    {
+      "id": "s2",
+      "title": "الخطوة 2",
+      "detail": "بعد Y1، Next يشغّل Y2",
+      "wireId": "w4",
+      "from": "L1.out",
+      "to": "y1no.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "toggle"
+      },
+      {
+        "id": "next",
+        "label": "Next",
+        "kind": "toggle"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Y1",
+        "label": "Y1",
+        "kind": "coil"
+      },
+      {
+        "id": "Y2",
+        "label": "Y2",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "Y2 لا يعمل قبل Y1."
+  },
+  "referenceImage": "/refs/sequential-control.png"
+}

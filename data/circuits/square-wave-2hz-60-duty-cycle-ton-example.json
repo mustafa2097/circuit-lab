@@ -1,0 +1,556 @@
+{
+  "id": "square-wave-2hz-60-duty-cycle-ton-example",
+  "title": "Square Wave 2Hz 60% Duty",
+  "titleAr": "موجة مربعة 2Hz وDuty 60%",
+  "sourceFile": "3 - Timers and Counters in PLC Based Control.ppt",
+  "page": "شريحة 10-11",
+  "purpose": "توليد موجة مربعة بمؤقتات",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 30
+      }
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "Start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 40
+      },
+      "signal": "start"
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "Stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 260,
+        "y": 80
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "Run",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 140
+      },
+      "monitors": "Run"
+    },
+    {
+      "id": "Run",
+      "type": "COIL",
+      "label": "Run",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 80
+      },
+      "signal": "Run"
+    },
+    {
+      "id": "run1",
+      "type": "CONTACT_NO",
+      "label": "Run",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 240
+      },
+      "monitors": "Run"
+    },
+    {
+      "id": "lednc",
+      "type": "CONTACT_NC",
+      "label": "LED",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 240
+      },
+      "monitors": "LED"
+    },
+    {
+      "id": "TON1",
+      "type": "TON",
+      "label": "TON 300ms",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 240
+      },
+      "signal": "T_on",
+      "preset": 300
+    },
+    {
+      "id": "run2",
+      "type": "CONTACT_NO",
+      "label": "Run",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 360
+      },
+      "monitors": "Run"
+    },
+    {
+      "id": "ton1no",
+      "type": "CONTACT_NO",
+      "label": "T_on",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 360
+      },
+      "monitors": "T_on"
+    },
+    {
+      "id": "LED",
+      "type": "LAMP",
+      "label": "LED",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 360
+      },
+      "signal": "LED"
+    },
+    {
+      "id": "run3",
+      "type": "CONTACT_NO",
+      "label": "Run",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 480
+      },
+      "monitors": "Run"
+    },
+    {
+      "id": "ledno",
+      "type": "CONTACT_NO",
+      "label": "LED",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 480
+      },
+      "monitors": "LED"
+    },
+    {
+      "id": "TON2",
+      "type": "TON",
+      "label": "TON 200ms",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 480
+      },
+      "signal": "T_off",
+      "preset": 200
+    },
+    {
+      "id": "toffnc",
+      "type": "CONTACT_NC",
+      "label": "T_off",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 360,
+        "y": 360
+      },
+      "monitors": "T_off"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "a2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "a3",
+      "from": "start.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a4",
+      "from": "seal.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a5",
+      "from": "stop.R",
+      "to": "Run.L"
+    },
+    {
+      "id": "a6",
+      "from": "Run.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "b1",
+      "from": "L1.out",
+      "to": "run1.L"
+    },
+    {
+      "id": "b2",
+      "from": "run1.R",
+      "to": "lednc.L"
+    },
+    {
+      "id": "b3",
+      "from": "lednc.R",
+      "to": "TON1.IN"
+    },
+    {
+      "id": "b4",
+      "from": "TON1.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "c1",
+      "from": "L1.out",
+      "to": "run2.L"
+    },
+    {
+      "id": "c2",
+      "from": "run2.R",
+      "to": "ton1no.L"
+    },
+    {
+      "id": "c3",
+      "from": "ton1no.R",
+      "to": "toffnc.L"
+    },
+    {
+      "id": "c4",
+      "from": "toffnc.R",
+      "to": "LED.L"
+    },
+    {
+      "id": "c5",
+      "from": "LED.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "d1",
+      "from": "L1.out",
+      "to": "run3.L"
+    },
+    {
+      "id": "d2",
+      "from": "run3.R",
+      "to": "ledno.L"
+    },
+    {
+      "id": "d3",
+      "from": "ledno.R",
+      "to": "TON2.IN"
+    },
+    {
+      "id": "d4",
+      "from": "TON2.Q",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "قفل Run",
+      "detail": "Start/Stop لـ Run",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "s2",
+      "title": "زمن التشغيل",
+      "detail": "Run و !LED يغذي TON 300ms",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "run1.L"
+    },
+    {
+      "id": "s3",
+      "title": "LED",
+      "detail": "Run و T_on و !T_off يشغّل LED",
+      "wireId": "c1",
+      "from": "L1.out",
+      "to": "run2.L"
+    },
+    {
+      "id": "s4",
+      "title": "زمن الإطفاء",
+      "detail": "Run و LED يغذي TON 200ms",
+      "wireId": "d1",
+      "from": "L1.out",
+      "to": "run3.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Run",
+        "label": "Run",
+        "kind": "coil"
+      },
+      {
+        "id": "LED",
+        "label": "LED",
+        "kind": "lamp"
+      },
+      {
+        "id": "T_on",
+        "label": "T_on",
+        "kind": "timer"
+      },
+      {
+        "id": "T_off",
+        "label": "T_off",
+        "kind": "timer"
+      }
+    ],
+    "tickMs": 20,
+    "description": "بعد Start يومض LED بموجة تقريباً 2Hz وDuty 60%."
+  },
+  "referenceImage": "/refs/square-wave-2hz-60-duty-cycle-ton-example.png"
+}

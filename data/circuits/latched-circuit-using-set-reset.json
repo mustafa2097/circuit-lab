@@ -1,0 +1,274 @@
+{
+  "id": "latched-circuit-using-set-reset",
+  "title": "Latched Circuit using Set & Reset",
+  "titleAr": "قفل باستخدام Set و Reset",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 41",
+  "purpose": "قفل/إلغاء قفل الخرج بتعليماتي Set و Reset",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 40
+      },
+      "targetPosition": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 720,
+        "y": 80
+      }
+    },
+    {
+      "id": "set",
+      "type": "PB_NO",
+      "label": "Set",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 180,
+        "y": 60
+      },
+      "signal": "set"
+    },
+    {
+      "id": "rst",
+      "type": "PB_NO",
+      "label": "Reset",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 180,
+        "y": 180
+      },
+      "signal": "reset"
+    },
+    {
+      "id": "Y1",
+      "type": "COIL",
+      "label": "Y1 (S)",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 60
+      },
+      "signal": "Y1"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 180,
+        "y": 120
+      },
+      "monitors": "Y1"
+    },
+    {
+      "id": "rstnc",
+      "type": "CONTACT_NC",
+      "label": "Reset",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 680
+      },
+      "targetPosition": {
+        "x": 320,
+        "y": 90
+      },
+      "monitors": "reset"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "set.L"
+    },
+    {
+      "id": "w2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "w3",
+      "from": "set.R",
+      "to": "rstnc.L"
+    },
+    {
+      "id": "w4",
+      "from": "seal.R",
+      "to": "rstnc.L"
+    },
+    {
+      "id": "w5",
+      "from": "rstnc.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "w6",
+      "from": "Y1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w7",
+      "from": "L1.out",
+      "to": "rst.L"
+    },
+    {
+      "id": "w8",
+      "from": "rst.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "ضع الأعمدة",
+      "detail": "ضع L1 و L2.",
+      "placeComponentId": "L1"
+    },
+    {
+      "id": "s2",
+      "title": "مسار Set",
+      "detail": "اربط L1 → Set → تلامس Reset NC → Y1 → L2",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "set.L"
+    },
+    {
+      "id": "s3",
+      "title": "مسار القفل",
+      "detail": "اربط L1 → تلامس Y1 موازي لـ Set",
+      "wireId": "w2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "s4",
+      "title": "أكمل إلى الملف",
+      "detail": "صل المسارين عبر NC الخاص بـ Reset إلى Y1 ثم L2",
+      "wireId": "w5",
+      "from": "rstnc.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "s5",
+      "title": "مسار زر Reset",
+      "detail": "اربط زر Reset بين L1 و L2 كمدخل",
+      "wireId": "w7",
+      "from": "L1.out",
+      "to": "rst.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "set",
+        "label": "Set",
+        "kind": "momentary"
+      },
+      {
+        "id": "reset",
+        "label": "Reset",
+        "kind": "momentary"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Y1",
+        "label": "Y1",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "Set يشغّل ويقفل Y1. Reset يفك القفل."
+  },
+  "referenceImage": "/refs/latched-circuit-using-set-reset.png"
+}

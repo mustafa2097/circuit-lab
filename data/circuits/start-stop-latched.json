@@ -1,0 +1,288 @@
+{
+  "id": "start-stop-latched",
+  "title": "Start, Stop & Latched",
+  "titleAr": "تشغيل / إيقاف مع قفل (Latch)",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 40",
+  "purpose": "تشغيل خرج بزر لحظي والإبقاء عليه شغالاً حتى Stop",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 40
+      },
+      "targetPosition": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 720,
+        "y": 80
+      }
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 60
+      },
+      "signal": "start"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 150
+      },
+      "signal": "Y1",
+      "monitors": "Y1"
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 320,
+        "y": 100
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "Y1",
+      "type": "COIL",
+      "label": "Y1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 480,
+        "y": 100
+      },
+      "signal": "Y1"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "w2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "w3",
+      "from": "start.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "w4",
+      "from": "seal.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "w5",
+      "from": "stop.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "w6",
+      "from": "Y1.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "ضع عمود L1",
+      "detail": "ضع عمود التغذية L1 على يسار اللوحة.",
+      "placeComponentId": "L1"
+    },
+    {
+      "id": "s2",
+      "title": "ضع عمود L2",
+      "detail": "ضع عمود L2 على يمين اللوحة.",
+      "placeComponentId": "L2"
+    },
+    {
+      "id": "s3",
+      "title": "ضع زر start",
+      "detail": "ضع ضغطة start (NO) في المسار العلوي.",
+      "placeComponentId": "start"
+    },
+    {
+      "id": "s4",
+      "title": "اربط L1 إلى start",
+      "detail": "صل مخرج L1 إلى يسار start.",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "s5",
+      "title": "ضع تلامس القفل Y1",
+      "detail": "ضع تلامس NO لـ Y1 موازياً لـ start.",
+      "placeComponentId": "seal"
+    },
+    {
+      "id": "s6",
+      "title": "اربط L1 إلى تلامس Y1",
+      "detail": "صل L1 إلى يسار تلامس Y1 (مسار القفل).",
+      "wireId": "w2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "s7",
+      "title": "ضع زر stop",
+      "detail": "ضع ضغطة stop (NC) بعد التوازي.",
+      "placeComponentId": "stop"
+    },
+    {
+      "id": "s8",
+      "title": "اربط start إلى stop",
+      "detail": "صل يمين start إلى يسار stop.",
+      "wireId": "w3",
+      "from": "start.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "s9",
+      "title": "اربط تلامس Y1 إلى stop",
+      "detail": "صل يمين تلامس Y1 إلى يسار stop.",
+      "wireId": "w4",
+      "from": "seal.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "s10",
+      "title": "ضع ملف Y1",
+      "detail": "ضع ملف الخرج Y1 في نهاية الرنج.",
+      "placeComponentId": "Y1"
+    },
+    {
+      "id": "s11",
+      "title": "اربط stop إلى Y1",
+      "detail": "صل يمين stop إلى يسار ملف Y1.",
+      "wireId": "w5",
+      "from": "stop.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "s12",
+      "title": "اربط Y1 إلى L2",
+      "detail": "صل يمين ملف Y1 إلى L2.",
+      "wireId": "w6",
+      "from": "Y1.R",
+      "to": "L2.in"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "nc-hold",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Y1",
+        "label": "Y1",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "اضغط Start فيشتغل Y1 ويُقفل. اضغط Stop فينطفئ."
+  },
+  "referenceImage": "/refs/start-stop-latched.png"
+}

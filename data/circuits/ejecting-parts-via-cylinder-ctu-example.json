@@ -1,0 +1,304 @@
+{
+  "id": "ejecting-parts-via-cylinder-ctu-example",
+  "title": "Ejecting Parts (CTU)",
+  "titleAr": "إخراج قطع بعداد تصاعدي",
+  "sourceFile": "3 - Timers and Counters in PLC Based Control.ppt",
+  "page": "شريحة 17-18",
+  "purpose": "إخراج 12 قطعة ثم المنع حتى Reset",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 30
+      }
+    },
+    {
+      "id": "eject",
+      "type": "PB_NO",
+      "label": "Eject",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 40
+      },
+      "signal": "eject"
+    },
+    {
+      "id": "doneNc",
+      "type": "CONTACT_NC",
+      "label": "Done",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 40
+      },
+      "monitors": "Done"
+    },
+    {
+      "id": "ExA",
+      "type": "COIL",
+      "label": "ExA",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 40
+      },
+      "signal": "ExA"
+    },
+    {
+      "id": "A1",
+      "type": "SENSOR",
+      "label": "A1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 180
+      },
+      "signal": "A1"
+    },
+    {
+      "id": "CTU",
+      "type": "CTU",
+      "label": "CTU 12",
+      "ports": [
+        {
+          "id": "CU",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 180
+      },
+      "signal": "Done",
+      "preset": 12
+    },
+    {
+      "id": "rst",
+      "type": "PB_NO",
+      "label": "Reset",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 300
+      },
+      "signal": "reset"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "eject.L"
+    },
+    {
+      "id": "w2",
+      "from": "eject.R",
+      "to": "doneNc.L"
+    },
+    {
+      "id": "w3",
+      "from": "doneNc.R",
+      "to": "ExA.L"
+    },
+    {
+      "id": "w4",
+      "from": "ExA.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w5",
+      "from": "L1.out",
+      "to": "A1.L"
+    },
+    {
+      "id": "w6",
+      "from": "A1.R",
+      "to": "CTU.CU"
+    },
+    {
+      "id": "w7",
+      "from": "L1.out",
+      "to": "rst.L"
+    },
+    {
+      "id": "w8",
+      "from": "rst.R",
+      "to": "CTU.R"
+    },
+    {
+      "id": "w9",
+      "from": "CTU.Q",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "الإخراج",
+      "detail": "Eject عبر !Done يشغّل ExA",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "eject.L"
+    },
+    {
+      "id": "s2",
+      "title": "العد",
+      "detail": "A1 يعد على CTU",
+      "wireId": "w5",
+      "from": "L1.out",
+      "to": "A1.L"
+    },
+    {
+      "id": "s3",
+      "title": "التصفير",
+      "detail": "Reset يصفّر العداد",
+      "wireId": "w7",
+      "from": "L1.out",
+      "to": "rst.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "eject",
+        "label": "Eject",
+        "kind": "momentary"
+      },
+      {
+        "id": "A1",
+        "label": "A1",
+        "kind": "momentary"
+      },
+      {
+        "id": "reset",
+        "label": "Reset",
+        "kind": "momentary"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ExA",
+        "label": "ExA",
+        "kind": "actuator"
+      },
+      {
+        "id": "Done",
+        "label": "Done(Q)",
+        "kind": "counter"
+      }
+    ],
+    "tickMs": 50,
+    "description": "بعد 12 نبضة A1 يتوقف الإخراج حتى Reset."
+  },
+  "referenceImage": "/refs/ejecting-parts-via-cylinder-ctu-example.png"
+}

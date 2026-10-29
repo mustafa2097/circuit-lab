@@ -1,0 +1,106 @@
+{
+  "id": "oscillating-circuit",
+  "title": "Oscillating Circuit",
+  "titleAr": "دائرة تذبذب",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 47 / 8",
+  "purpose": "تذبذب سريع لـ Y1 عبر تلامس NC لنفسه",
+  "referenceImage": "/refs/oscillating-circuit.png",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [{ "id": "out", "side": "right" }],
+      "trayPosition": { "x": 20, "y": 40 },
+      "targetPosition": { "x": 40, "y": 80 }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [{ "id": "in", "side": "left" }],
+      "trayPosition": { "x": 20, "y": 200 },
+      "targetPosition": { "x": 520, "y": 80 }
+    },
+    {
+      "id": "y1nc",
+      "type": "CONTACT_NC",
+      "label": "Y1",
+      "monitors": "Y1",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 40, "y": 360 },
+      "targetPosition": { "x": 180, "y": 100 }
+    },
+    {
+      "id": "Y1",
+      "type": "COIL",
+      "label": "Y1",
+      "signal": "Y1",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 40, "y": 440 },
+      "targetPosition": { "x": 360, "y": 100 }
+    }
+  ],
+  "referenceWires": [
+    { "id": "w1", "from": "L1.out", "to": "y1nc.L" },
+    { "id": "w2", "from": "y1nc.R", "to": "Y1.L" },
+    { "id": "w3", "from": "Y1.R", "to": "L2.in" }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "ضع الأعمدة",
+      "detail": "ضع عمود L1 وعمود L2.",
+      "placeComponentId": "L1"
+    },
+    {
+      "id": "s2",
+      "title": "تلامس Y1 (NC)",
+      "detail": "ضع تلامس NC لـ Y1 على الرنج.",
+      "placeComponentId": "y1nc"
+    },
+    {
+      "id": "s3",
+      "title": "اربط L1 إلى التلامس",
+      "detail": "صل مخرج L1 إلى يسار تلامس Y1.",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "y1nc.L"
+    },
+    {
+      "id": "s4",
+      "title": "ملف Y1",
+      "detail": "ضع ملف Y1 في نهاية الرنج.",
+      "placeComponentId": "Y1"
+    },
+    {
+      "id": "s5",
+      "title": "اربط التلامس إلى الملف",
+      "detail": "صل يمين تلامس Y1 إلى يسار ملف Y1.",
+      "wireId": "w2",
+      "from": "y1nc.R",
+      "to": "Y1.L"
+    },
+    {
+      "id": "s6",
+      "title": "اربط إلى L2",
+      "detail": "صل يمين ملف Y1 إلى L2.",
+      "wireId": "w3",
+      "from": "Y1.R",
+      "to": "L2.in"
+    }
+  ],
+  "simulation": {
+    "inputs": [],
+    "outputs": [{ "id": "Y1", "label": "Y1", "kind": "coil" }],
+    "tickMs": 50,
+    "description": "Y1 يتذبذب تلقائياً: يشتغل فيفتح تلامسه NC فينطفئ ثم يعود، كما في الملزمة (8)."
+  }
+}

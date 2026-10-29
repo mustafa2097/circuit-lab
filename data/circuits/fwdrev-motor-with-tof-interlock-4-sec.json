@@ -1,0 +1,506 @@
+{
+  "id": "fwdrev-motor-with-tof-interlock-4-sec",
+  "title": "Fwd/Rev with TOF 4s",
+  "titleAr": "أمامي/خلفي مع TOF 4 ثوانٍ",
+  "sourceFile": "6 - General Questions.pdf",
+  "page": "صفحة 4 / Q11",
+  "purpose": "تأخير 4 ثوانٍ قبل عكس الاتجاه",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 820,
+        "y": 20
+      }
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 40
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "OL",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 40
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "FW",
+      "type": "PB_NO",
+      "label": "FW",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 40
+      },
+      "signal": "FW"
+    },
+    {
+      "id": "m1s",
+      "type": "CONTACT_NO",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 120
+      },
+      "monitors": "M1"
+    },
+    {
+      "id": "tof2nc",
+      "type": "CONTACT_NC",
+      "label": "TOF2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 520,
+        "y": 80
+      },
+      "monitors": "TOF2"
+    },
+    {
+      "id": "M1",
+      "type": "COIL",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 680
+      },
+      "targetPosition": {
+        "x": 680,
+        "y": 80
+      },
+      "signal": "M1"
+    },
+    {
+      "id": "TOF1",
+      "type": "TOF",
+      "label": "TOF1 4s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 680,
+        "y": 180
+      },
+      "signal": "TOF1",
+      "preset": 4000
+    },
+    {
+      "id": "RV",
+      "type": "PB_NO",
+      "label": "RV",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 280
+      },
+      "signal": "RV"
+    },
+    {
+      "id": "m2s",
+      "type": "CONTACT_NO",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 360
+      },
+      "monitors": "M2"
+    },
+    {
+      "id": "tof1nc",
+      "type": "CONTACT_NC",
+      "label": "TOF1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 520,
+        "y": 320
+      },
+      "monitors": "TOF1"
+    },
+    {
+      "id": "M2",
+      "type": "COIL",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 680,
+        "y": 320
+      },
+      "signal": "M2"
+    },
+    {
+      "id": "TOF2",
+      "type": "TOF",
+      "label": "TOF2 4s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 680,
+        "y": 420
+      },
+      "signal": "TOF2",
+      "preset": 4000
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "s1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "s2",
+      "from": "stop.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "f1",
+      "from": "OL.R",
+      "to": "FW.L"
+    },
+    {
+      "id": "f2",
+      "from": "OL.R",
+      "to": "m1s.L"
+    },
+    {
+      "id": "f3",
+      "from": "FW.R",
+      "to": "tof2nc.L"
+    },
+    {
+      "id": "f4",
+      "from": "m1s.R",
+      "to": "tof2nc.L"
+    },
+    {
+      "id": "f5",
+      "from": "tof2nc.R",
+      "to": "M1.L"
+    },
+    {
+      "id": "f6",
+      "from": "M1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "f7",
+      "from": "M1.L",
+      "to": "TOF1.IN"
+    },
+    {
+      "id": "f8",
+      "from": "TOF1.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "r1",
+      "from": "OL.R",
+      "to": "RV.L"
+    },
+    {
+      "id": "r2",
+      "from": "OL.R",
+      "to": "m2s.L"
+    },
+    {
+      "id": "r3",
+      "from": "RV.R",
+      "to": "tof1nc.L"
+    },
+    {
+      "id": "r4",
+      "from": "m2s.R",
+      "to": "tof1nc.L"
+    },
+    {
+      "id": "r5",
+      "from": "tof1nc.R",
+      "to": "M2.L"
+    },
+    {
+      "id": "r6",
+      "from": "M2.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "r7",
+      "from": "M2.L",
+      "to": "TOF2.IN"
+    },
+    {
+      "id": "r8",
+      "from": "TOF2.Q",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "حماية عامة",
+      "detail": "stop و OL مشتركان",
+      "wireId": "s1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "s2",
+      "title": "أمامي",
+      "detail": "FW // M1 عبر !TOF2 إلى M1 و TOF1",
+      "wireId": "f1",
+      "from": "OL.R",
+      "to": "FW.L"
+    },
+    {
+      "id": "s3",
+      "title": "خلفي",
+      "detail": "RV // M2 عبر !TOF1 إلى M2 و TOF2",
+      "wireId": "r1",
+      "from": "OL.R",
+      "to": "RV.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "FW",
+        "label": "FW",
+        "kind": "momentary"
+      },
+      {
+        "id": "RV",
+        "label": "RV",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "OL",
+        "label": "OL",
+        "kind": "toggle",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "M1",
+        "label": "M1",
+        "kind": "coil"
+      },
+      {
+        "id": "M2",
+        "label": "M2",
+        "kind": "coil"
+      },
+      {
+        "id": "TOF1",
+        "label": "TOF1",
+        "kind": "timer"
+      },
+      {
+        "id": "TOF2",
+        "label": "TOF2",
+        "kind": "timer"
+      }
+    ],
+    "tickMs": 50,
+    "description": "بعد إيقاف اتجاه، انتظر 4ث قبل الاتجاه المعاكس."
+  },
+  "referenceImage": "/refs/fwdrev-motor-with-tof-interlock-4-sec.png"
+}

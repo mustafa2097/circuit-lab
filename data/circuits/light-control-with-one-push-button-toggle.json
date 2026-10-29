@@ -1,0 +1,245 @@
+{
+  "id": "light-control-with-one-push-button-toggle",
+  "title": "Light Toggle One PB",
+  "titleAr": "لمبة بزر واحد",
+  "sourceFile": "4 - State-Based Design.ppt",
+  "page": "شريحة 5-6",
+  "purpose": "تبديل لمبة بزر واحد",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 700,
+        "y": 30
+      }
+    },
+    {
+      "id": "pb",
+      "type": "PB_NO",
+      "label": "PB",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 40
+      },
+      "signal": "PB"
+    },
+    {
+      "id": "st0",
+      "type": "CONTACT_NO",
+      "label": "St0",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 40
+      },
+      "monitors": "St0"
+    },
+    {
+      "id": "St1",
+      "type": "COIL",
+      "label": "St1/L",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 460,
+        "y": 40
+      },
+      "signal": "L"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "L",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 140
+      },
+      "monitors": "L"
+    },
+    {
+      "id": "pbnc",
+      "type": "CONTACT_NC",
+      "label": "PB",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 620
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 140
+      },
+      "monitors": "PB"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "pb.L"
+    },
+    {
+      "id": "w2",
+      "from": "pb.R",
+      "to": "St1.L"
+    },
+    {
+      "id": "w3",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "w4",
+      "from": "seal.R",
+      "to": "pbnc.L"
+    },
+    {
+      "id": "w5",
+      "from": "pbnc.R",
+      "to": "St1.L"
+    },
+    {
+      "id": "w6",
+      "from": "St1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w7",
+      "from": "L1.out",
+      "to": "st0.L"
+    },
+    {
+      "id": "w8",
+      "from": "st0.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "قفل بزر واحد",
+      "detail": "PB يضبط/يفك عبر مسار القفل و NC",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "pb.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "PB",
+        "label": "PB",
+        "kind": "momentary"
+      },
+      {
+        "id": "St0",
+        "label": "St0",
+        "kind": "toggle",
+        "default": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "L",
+        "label": "Light",
+        "kind": "lamp"
+      }
+    ],
+    "tickMs": 50,
+    "description": "اضغط PB للتشغيل؛ اتركه ثم اضغط لفك القفل عبر مسار NC."
+  },
+  "referenceImage": "/refs/light-control-with-one-push-button-toggle.png"
+}

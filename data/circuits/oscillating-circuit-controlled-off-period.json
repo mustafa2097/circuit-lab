@@ -1,0 +1,172 @@
+{
+  "id": "oscillating-circuit-controlled-off-period",
+  "title": "Oscillating Circuit with Controlled off Period",
+  "titleAr": "دائرة تذبذب بفترة إيقاف مسيطر عليها",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 47 / 9",
+  "purpose": "تذبذب Y1 مع زمن إيقاف 50ms عبر TON عند تفعيل X0",
+  "referenceImage": "/refs/oscillating-circuit-controlled-off-period.png",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [{ "id": "out", "side": "right" }],
+      "trayPosition": { "x": 20, "y": 20 },
+      "targetPosition": { "x": 30, "y": 40 }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [{ "id": "in", "side": "left" }],
+      "trayPosition": { "x": 20, "y": 200 },
+      "targetPosition": { "x": 780, "y": 40 }
+    },
+    {
+      "id": "X0a",
+      "type": "CONTACT_NO",
+      "label": "X0",
+      "monitors": "X0",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 40, "y": 300 },
+      "targetPosition": { "x": 140, "y": 60 }
+    },
+    {
+      "id": "y1nc",
+      "type": "CONTACT_NC",
+      "label": "Y1",
+      "monitors": "Y1",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 40, "y": 380 },
+      "targetPosition": { "x": 280, "y": 60 }
+    },
+    {
+      "id": "TON",
+      "type": "TON",
+      "label": "TON 50ms",
+      "signal": "T50",
+      "preset": 50,
+      "ports": [
+        { "id": "IN", "side": "left" },
+        { "id": "Q", "side": "right" }
+      ],
+      "trayPosition": { "x": 40, "y": 460 },
+      "targetPosition": { "x": 440, "y": 50 }
+    },
+    {
+      "id": "T50",
+      "type": "COIL",
+      "label": "T50",
+      "signal": "T50",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 40, "y": 540 },
+      "targetPosition": { "x": 620, "y": 60 }
+    },
+    {
+      "id": "t50no",
+      "type": "CONTACT_NO",
+      "label": "T50",
+      "monitors": "T50",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 180, "y": 300 },
+      "targetPosition": { "x": 140, "y": 220 }
+    },
+    {
+      "id": "X0b",
+      "type": "CONTACT_NO",
+      "label": "X0",
+      "monitors": "X0",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 180, "y": 380 },
+      "targetPosition": { "x": 280, "y": 220 }
+    },
+    {
+      "id": "Y1",
+      "type": "COIL",
+      "label": "Y1",
+      "signal": "Y1",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 180, "y": 460 },
+      "targetPosition": { "x": 440, "y": 220 }
+    },
+    {
+      "id": "X0",
+      "type": "PB_NO",
+      "label": "X0",
+      "signal": "X0",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 180, "y": 540 },
+      "targetPosition": { "x": 140, "y": 360 }
+    }
+  ],
+  "referenceWires": [
+    { "id": "a1", "from": "L1.out", "to": "X0a.L" },
+    { "id": "a2", "from": "X0a.R", "to": "y1nc.L" },
+    { "id": "a3", "from": "y1nc.R", "to": "TON.IN" },
+    { "id": "a4", "from": "TON.Q", "to": "T50.L" },
+    { "id": "a5", "from": "T50.R", "to": "L2.in" },
+    { "id": "b1", "from": "L1.out", "to": "t50no.L" },
+    { "id": "b2", "from": "t50no.R", "to": "X0b.L" },
+    { "id": "b3", "from": "X0b.R", "to": "Y1.L" },
+    { "id": "b4", "from": "Y1.R", "to": "L2.in" },
+    { "id": "c1", "from": "L1.out", "to": "X0.L" },
+    { "id": "c2", "from": "X0.R", "to": "L2.in" }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "الرنج الأول",
+      "detail": "L1 → X0 → Y1(NC) → TON 50ms → ملف T50 → L2",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "X0a.L"
+    },
+    {
+      "id": "s2",
+      "title": "الرنج الثاني",
+      "detail": "L1 → T50(NO) → X0 → ملف Y1 → L2",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "t50no.L"
+    },
+    {
+      "id": "s3",
+      "title": "مدخل X0",
+      "detail": "اربط زر/مدخل X0 بين L1 و L2 للتشغيل.",
+      "wireId": "c1",
+      "from": "L1.out",
+      "to": "X0.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [{ "id": "X0", "label": "X0", "kind": "toggle" }],
+    "outputs": [
+      { "id": "T50", "label": "T50", "kind": "timer" },
+      { "id": "Y1", "label": "Y1", "kind": "coil" }
+    ],
+    "tickMs": 20,
+    "description": "فعّل X0: المؤقت TON=50ms يضبط فترة الإيقاف ثم يتذبذب Y1 كما في الملزمة (9)."
+  }
+}

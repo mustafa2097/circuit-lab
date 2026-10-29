@@ -3,19 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --fg: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --accent: #0f766e;
+  --danger: #b91c1c;
+  --ok: #15803d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.react-flow__attribution {
+  display: none !important;
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -24;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.ghost-edge path {
+  stroke: #0f766e !important;
+  stroke-width: 2.5px !important;
+  stroke-dasharray: 6 6;
+  animation: dashFlow 0.8s linear infinite;
+  opacity: 0.9;
+}
+
+.live-on {
+  box-shadow: 0 0 0 2px #16a34a inset;
+}
+
+.live-off {
+  opacity: 0.85;
 }

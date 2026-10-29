@@ -1,0 +1,598 @@
+{
+  "id": "q3-reversing-motor-control-circuit",
+  "title": "Reversing Motor Control Circuit",
+  "titleAr": "محرك أمامي/خلفي مع تأخير 6ث",
+  "sourceFile": "3 - Timers and Counters in PLC Based Control.ppt",
+  "page": "شريحة 25",
+  "purpose": "عكس اتجاه المحرك مع تعشيق وتأخير",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 820,
+        "y": 20
+      }
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "Stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 100,
+        "y": 40
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "sf",
+      "type": "PB_NO",
+      "label": "StartFw",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 40
+      },
+      "signal": "StartFw"
+    },
+    {
+      "id": "m1s",
+      "type": "CONTACT_NO",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 120
+      },
+      "monitors": "M1"
+    },
+    {
+      "id": "td2nc",
+      "type": "CONTACT_NC",
+      "label": "TD2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 80
+      },
+      "monitors": "TD2"
+    },
+    {
+      "id": "m2nc",
+      "type": "CONTACT_NC",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 620
+      },
+      "targetPosition": {
+        "x": 520,
+        "y": 80
+      },
+      "monitors": "M2"
+    },
+    {
+      "id": "OL",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 700
+      },
+      "targetPosition": {
+        "x": 660,
+        "y": 80
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "M1",
+      "type": "COIL",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 40
+      },
+      "signal": "M1"
+    },
+    {
+      "id": "TD1",
+      "type": "TON",
+      "label": "TD1 6s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 140
+      },
+      "signal": "TD1",
+      "preset": 6000
+    },
+    {
+      "id": "sr",
+      "type": "PB_NO",
+      "label": "StartRev",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 280
+      },
+      "signal": "StartRev"
+    },
+    {
+      "id": "m2s",
+      "type": "CONTACT_NO",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 240,
+        "y": 360
+      },
+      "monitors": "M2"
+    },
+    {
+      "id": "td1nc",
+      "type": "CONTACT_NC",
+      "label": "TD1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 380,
+        "y": 320
+      },
+      "monitors": "TD1"
+    },
+    {
+      "id": "m1nc",
+      "type": "CONTACT_NC",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 520,
+        "y": 320
+      },
+      "monitors": "M1"
+    },
+    {
+      "id": "OL2",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 620
+      },
+      "targetPosition": {
+        "x": 660,
+        "y": 320
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "M2",
+      "type": "COIL",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 280
+      },
+      "signal": "M2"
+    },
+    {
+      "id": "TD2",
+      "type": "TON",
+      "label": "TD2 6s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 380
+      },
+      "signal": "TD2",
+      "preset": 6000
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "s0",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "f0",
+      "from": "stop.R",
+      "to": "sf.L"
+    },
+    {
+      "id": "f1",
+      "from": "stop.R",
+      "to": "m1s.L"
+    },
+    {
+      "id": "f2",
+      "from": "sf.R",
+      "to": "td2nc.L"
+    },
+    {
+      "id": "f3",
+      "from": "m1s.R",
+      "to": "td2nc.L"
+    },
+    {
+      "id": "f4",
+      "from": "td2nc.R",
+      "to": "m2nc.L"
+    },
+    {
+      "id": "f5",
+      "from": "m2nc.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "f6",
+      "from": "OL.R",
+      "to": "M1.L"
+    },
+    {
+      "id": "f7",
+      "from": "M1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "f8",
+      "from": "stop.R",
+      "to": "TD1.IN"
+    },
+    {
+      "id": "f9",
+      "from": "M1.L",
+      "to": "TD1.IN"
+    },
+    {
+      "id": "f10",
+      "from": "TD1.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "r0",
+      "from": "stop.R",
+      "to": "sr.L"
+    },
+    {
+      "id": "r1",
+      "from": "stop.R",
+      "to": "m2s.L"
+    },
+    {
+      "id": "r2",
+      "from": "sr.R",
+      "to": "td1nc.L"
+    },
+    {
+      "id": "r3",
+      "from": "m2s.R",
+      "to": "td1nc.L"
+    },
+    {
+      "id": "r4",
+      "from": "td1nc.R",
+      "to": "m1nc.L"
+    },
+    {
+      "id": "r5",
+      "from": "m1nc.R",
+      "to": "OL2.L"
+    },
+    {
+      "id": "r6",
+      "from": "OL2.R",
+      "to": "M2.L"
+    },
+    {
+      "id": "r7",
+      "from": "M2.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "r8",
+      "from": "M2.L",
+      "to": "TD2.IN"
+    },
+    {
+      "id": "r9",
+      "from": "TD2.Q",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "Stop مشترك",
+      "detail": "اربط L1 إلى Stop ثم تفرّع للمسارين",
+      "wireId": "s0",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "s2",
+      "title": "مسار أمامي",
+      "detail": "StartFw // M1 ثم NC TD2 ثم NC M2 ثم OL ثم M1 و TD1",
+      "wireId": "f0",
+      "from": "stop.R",
+      "to": "sf.L"
+    },
+    {
+      "id": "s3",
+      "title": "مسار خلفي",
+      "detail": "StartRev // M2 ثم NC TD1 ثم NC M1 ثم OL ثم M2 و TD2",
+      "wireId": "r0",
+      "from": "stop.R",
+      "to": "sr.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "StartFw",
+        "label": "StartFw",
+        "kind": "momentary"
+      },
+      {
+        "id": "StartRev",
+        "label": "StartRev",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "OL",
+        "label": "OL",
+        "kind": "toggle",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "M1",
+        "label": "M1",
+        "kind": "coil"
+      },
+      {
+        "id": "M2",
+        "label": "M2",
+        "kind": "coil"
+      },
+      {
+        "id": "TD1",
+        "label": "TD1",
+        "kind": "timer"
+      },
+      {
+        "id": "TD2",
+        "label": "TD2",
+        "kind": "timer"
+      }
+    ],
+    "tickMs": 50,
+    "description": "أمامي/خلفي مع تعشيق؛ المؤقتات تمنع العكس الفوري."
+  },
+  "referenceImage": "/refs/q3-reversing-motor-control-circuit.png"
+}

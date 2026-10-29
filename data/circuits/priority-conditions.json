@@ -1,0 +1,244 @@
+{
+  "id": "priority-conditions",
+  "title": "Priority Conditions",
+  "titleAr": "شروط أولوية",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 46",
+  "purpose": "الأولوية العليا تمنع الدنيا",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 720,
+        "y": 30
+      }
+    },
+    {
+      "id": "hi",
+      "type": "PB_NO",
+      "label": "High",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 40
+      },
+      "signal": "high"
+    },
+    {
+      "id": "YH",
+      "type": "COIL",
+      "label": "YH",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 40
+      },
+      "signal": "YH"
+    },
+    {
+      "id": "lo",
+      "type": "PB_NO",
+      "label": "Low",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 180
+      },
+      "signal": "low"
+    },
+    {
+      "id": "hinc",
+      "type": "CONTACT_NC",
+      "label": "YH",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 180
+      },
+      "monitors": "YH"
+    },
+    {
+      "id": "YL",
+      "type": "COIL",
+      "label": "YL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 640
+      },
+      "targetPosition": {
+        "x": 460,
+        "y": 180
+      },
+      "signal": "YL"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "hi.L"
+    },
+    {
+      "id": "w2",
+      "from": "hi.R",
+      "to": "YH.L"
+    },
+    {
+      "id": "w3",
+      "from": "YH.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w4",
+      "from": "L1.out",
+      "to": "lo.L"
+    },
+    {
+      "id": "w5",
+      "from": "lo.R",
+      "to": "hinc.L"
+    },
+    {
+      "id": "w6",
+      "from": "hinc.R",
+      "to": "YL.L"
+    },
+    {
+      "id": "w7",
+      "from": "YL.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "أولوية",
+      "detail": "High يشغّل YH ويمنع YL",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "hi.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "high",
+        "label": "High",
+        "kind": "toggle"
+      },
+      {
+        "id": "low",
+        "label": "Low",
+        "kind": "toggle"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "YH",
+        "label": "YH",
+        "kind": "coil"
+      },
+      {
+        "id": "YL",
+        "label": "YL",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "عند High لا يعمل YL."
+  },
+  "referenceImage": "/refs/priority-conditions.png"
+}

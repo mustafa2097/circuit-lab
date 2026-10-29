@@ -1,0 +1,735 @@
+{
+  "id": "forwardreverse-motor-control-kfkr-with-main-indicators",
+  "title": "Forward/Reverse Motor Control (Kf/Kr)",
+  "titleAr": "محرك أمامي/خلفي مع Main ومؤشرات",
+  "sourceFile": "6 - General Questions.pdf",
+  "page": "صفحة 1 / Q1",
+  "purpose": "تحكم أمامي/خلفي مع تعشيق ولمبات",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 820,
+        "y": 30
+      }
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 50
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 250,
+        "y": 50
+      },
+      "signal": "start"
+    },
+    {
+      "id": "mainSeal",
+      "type": "CONTACT_NO",
+      "label": "Main",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 250,
+        "y": 130
+      },
+      "monitors": "Main"
+    },
+    {
+      "id": "OL",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 390,
+        "y": 90
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "Main",
+      "type": "COIL",
+      "label": "Main",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 640
+      },
+      "targetPosition": {
+        "x": 530,
+        "y": 90
+      },
+      "signal": "Main"
+    },
+    {
+      "id": "FW",
+      "type": "PB_NO",
+      "label": "FW",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 220
+      },
+      "signal": "FW"
+    },
+    {
+      "id": "KrNc",
+      "type": "CONTACT_NC",
+      "label": "Kr",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 260,
+        "y": 220
+      },
+      "monitors": "Kr"
+    },
+    {
+      "id": "MainNo1",
+      "type": "CONTACT_NO",
+      "label": "Main",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 220
+      },
+      "monitors": "Main"
+    },
+    {
+      "id": "Kf",
+      "type": "COIL",
+      "label": "Kf",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 540,
+        "y": 220
+      },
+      "signal": "Kf"
+    },
+    {
+      "id": "KfSeal",
+      "type": "CONTACT_NO",
+      "label": "Kf",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 640
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 300
+      },
+      "monitors": "Kf"
+    },
+    {
+      "id": "RV",
+      "type": "PB_NO",
+      "label": "RV",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 400
+      },
+      "signal": "RV"
+    },
+    {
+      "id": "KfNc",
+      "type": "CONTACT_NC",
+      "label": "Kf",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 260,
+        "y": 400
+      },
+      "monitors": "Kf"
+    },
+    {
+      "id": "MainNo2",
+      "type": "CONTACT_NO",
+      "label": "Main",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 400
+      },
+      "monitors": "Main"
+    },
+    {
+      "id": "Kr",
+      "type": "COIL",
+      "label": "Kr",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 540,
+        "y": 400
+      },
+      "signal": "Kr"
+    },
+    {
+      "id": "KrSeal",
+      "type": "CONTACT_NO",
+      "label": "Kr",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 640
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 480
+      },
+      "monitors": "Kr"
+    },
+    {
+      "id": "G",
+      "type": "LAMP",
+      "label": "G",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 700,
+        "y": 220
+      },
+      "signal": "G"
+    },
+    {
+      "id": "KfG",
+      "type": "CONTACT_NO",
+      "label": "Kf",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 220
+      },
+      "monitors": "Kf"
+    },
+    {
+      "id": "R",
+      "type": "LAMP",
+      "label": "R",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 700,
+        "y": 400
+      },
+      "signal": "R"
+    },
+    {
+      "id": "KrR",
+      "type": "CONTACT_NO",
+      "label": "Kr",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 460,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 400
+      },
+      "monitors": "Kr"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "m1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "m2",
+      "from": "stop.R",
+      "to": "start.L"
+    },
+    {
+      "id": "m3",
+      "from": "stop.R",
+      "to": "mainSeal.L"
+    },
+    {
+      "id": "m4",
+      "from": "start.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "m5",
+      "from": "mainSeal.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "m6",
+      "from": "OL.R",
+      "to": "Main.L"
+    },
+    {
+      "id": "m7",
+      "from": "Main.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "f1",
+      "from": "L1.out",
+      "to": "FW.L"
+    },
+    {
+      "id": "f2",
+      "from": "L1.out",
+      "to": "KfSeal.L"
+    },
+    {
+      "id": "f3",
+      "from": "FW.R",
+      "to": "KrNc.L"
+    },
+    {
+      "id": "f4",
+      "from": "KfSeal.R",
+      "to": "KrNc.L"
+    },
+    {
+      "id": "f5",
+      "from": "KrNc.R",
+      "to": "MainNo1.L"
+    },
+    {
+      "id": "f6",
+      "from": "MainNo1.R",
+      "to": "Kf.L"
+    },
+    {
+      "id": "f7",
+      "from": "Kf.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "r1",
+      "from": "L1.out",
+      "to": "RV.L"
+    },
+    {
+      "id": "r2",
+      "from": "L1.out",
+      "to": "KrSeal.L"
+    },
+    {
+      "id": "r3",
+      "from": "RV.R",
+      "to": "KfNc.L"
+    },
+    {
+      "id": "r4",
+      "from": "KrSeal.R",
+      "to": "KfNc.L"
+    },
+    {
+      "id": "r5",
+      "from": "KfNc.R",
+      "to": "MainNo2.L"
+    },
+    {
+      "id": "r6",
+      "from": "MainNo2.R",
+      "to": "Kr.L"
+    },
+    {
+      "id": "r7",
+      "from": "Kr.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "g1",
+      "from": "L1.out",
+      "to": "KfG.L"
+    },
+    {
+      "id": "g2",
+      "from": "KfG.R",
+      "to": "G.L"
+    },
+    {
+      "id": "g3",
+      "from": "G.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "rr1",
+      "from": "L1.out",
+      "to": "KrR.L"
+    },
+    {
+      "id": "rr2",
+      "from": "KrR.R",
+      "to": "R.L"
+    },
+    {
+      "id": "rr3",
+      "from": "R.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "رنج Main",
+      "detail": "stop → (start // Main) → OL → Main",
+      "wireId": "m1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "s2",
+      "title": "رنج أمامي Kf",
+      "detail": "FW // Kf ثم NC لـ Kr ثم Main ثم Kf",
+      "wireId": "f1",
+      "from": "L1.out",
+      "to": "FW.L"
+    },
+    {
+      "id": "s3",
+      "title": "رنج خلفي Kr",
+      "detail": "RV // Kr ثم NC لـ Kf ثم Main ثم Kr",
+      "wireId": "r1",
+      "from": "L1.out",
+      "to": "RV.L"
+    },
+    {
+      "id": "s4",
+      "title": "المؤشرات",
+      "detail": "G عبر تلامس Kf و R عبر تلامس Kr",
+      "wireId": "g1",
+      "from": "L1.out",
+      "to": "KfG.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "FW",
+        "label": "FW",
+        "kind": "momentary"
+      },
+      {
+        "id": "RV",
+        "label": "RV",
+        "kind": "momentary"
+      },
+      {
+        "id": "OL",
+        "label": "OL",
+        "kind": "toggle",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Main",
+        "label": "Main",
+        "kind": "coil"
+      },
+      {
+        "id": "Kf",
+        "label": "Kf",
+        "kind": "coil"
+      },
+      {
+        "id": "Kr",
+        "label": "Kr",
+        "kind": "coil"
+      },
+      {
+        "id": "G",
+        "label": "G",
+        "kind": "lamp"
+      },
+      {
+        "id": "R",
+        "label": "R",
+        "kind": "lamp"
+      }
+    ],
+    "tickMs": 50,
+    "description": "شغّل Main ثم FW أو RV. التعشيق يمنع Kf و Kr معاً."
+  },
+  "referenceImage": "/refs/forwardreverse-motor-control-kfkr-with-main-indicators.png"
+}

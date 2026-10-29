@@ -1,0 +1,420 @@
+{
+  "id": "interlock-control",
+  "title": "Interlock Control",
+  "titleAr": "تحكم بالتعشيق (Interlock)",
+  "sourceFile": "2 - PLC Software - Introduction.ppt",
+  "page": "شريحة 45",
+  "purpose": "منع تشغيل خرجين متعارضين معاً",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 40
+      },
+      "targetPosition": {
+        "x": 40,
+        "y": 40
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 220
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 40
+      }
+    },
+    {
+      "id": "s1",
+      "type": "PB_NO",
+      "label": "Start1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 40
+      },
+      "signal": "start1"
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "Stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 80
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "m2nc",
+      "type": "CONTACT_NC",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 80
+      },
+      "monitors": "M2"
+    },
+    {
+      "id": "M1",
+      "type": "COIL",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 580,
+        "y": 80
+      },
+      "signal": "M1"
+    },
+    {
+      "id": "seal1",
+      "type": "CONTACT_NO",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 140
+      },
+      "monitors": "M1"
+    },
+    {
+      "id": "s2",
+      "type": "PB_NO",
+      "label": "Start2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 240
+      },
+      "signal": "start2"
+    },
+    {
+      "id": "stop2",
+      "type": "PB_NC",
+      "label": "Stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 280
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "m1nc",
+      "type": "CONTACT_NC",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 280
+      },
+      "monitors": "M1"
+    },
+    {
+      "id": "M2",
+      "type": "COIL",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 680
+      },
+      "targetPosition": {
+        "x": 580,
+        "y": 280
+      },
+      "signal": "M2"
+    },
+    {
+      "id": "seal2",
+      "type": "CONTACT_NO",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 280,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 160,
+        "y": 340
+      },
+      "monitors": "M2"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "s1.L"
+    },
+    {
+      "id": "a2",
+      "from": "L1.out",
+      "to": "seal1.L"
+    },
+    {
+      "id": "a3",
+      "from": "s1.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a4",
+      "from": "seal1.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a5",
+      "from": "stop.R",
+      "to": "m2nc.L"
+    },
+    {
+      "id": "a6",
+      "from": "m2nc.R",
+      "to": "M1.L"
+    },
+    {
+      "id": "a7",
+      "from": "M1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "b1",
+      "from": "L1.out",
+      "to": "s2.L"
+    },
+    {
+      "id": "b2",
+      "from": "L1.out",
+      "to": "seal2.L"
+    },
+    {
+      "id": "b3",
+      "from": "s2.R",
+      "to": "stop2.L"
+    },
+    {
+      "id": "b4",
+      "from": "seal2.R",
+      "to": "stop2.L"
+    },
+    {
+      "id": "b5",
+      "from": "stop2.R",
+      "to": "m1nc.L"
+    },
+    {
+      "id": "b6",
+      "from": "m1nc.R",
+      "to": "M2.L"
+    },
+    {
+      "id": "b7",
+      "from": "M2.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "رنج M1",
+      "detail": "ركّب Start1 موازي تلامس M1 ثم Stop ثم NC لـ M2 ثم ملف M1",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "s1.L"
+    },
+    {
+      "id": "s2",
+      "title": "رنج M2",
+      "detail": "ركّب Start2 موازي تلامس M2 ثم Stop ثم NC لـ M1 ثم ملف M2",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "s2.L"
+    },
+    {
+      "id": "s3",
+      "title": "التعشيق",
+      "detail": "تأكد أن NC لـ M2 على رنج M1 و NC لـ M1 على رنج M2 كما بالملزمة.",
+      "wireId": "a5",
+      "from": "stop.R",
+      "to": "m2nc.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start1",
+        "label": "Start1",
+        "kind": "momentary"
+      },
+      {
+        "id": "start2",
+        "label": "Start2",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "M1",
+        "label": "M1",
+        "kind": "coil"
+      },
+      {
+        "id": "M2",
+        "label": "M2",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "لا يعمل M1 و M2 معاً بسبب التعشيق."
+  },
+  "referenceImage": "/refs/interlock-control.png"
+}

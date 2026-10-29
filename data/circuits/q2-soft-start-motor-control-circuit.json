@@ -1,0 +1,474 @@
+{
+  "id": "q2-soft-start-motor-control-circuit",
+  "title": "Soft-Start Motor Control",
+  "titleAr": "تشغيل ناعم Soft-Start",
+  "sourceFile": "3 - Timers and Counters in PLC Based Control.ppt",
+  "page": "شريحة 24",
+  "purpose": "تطبيق القدرة تدريجياً ثم bypass بعد 4 ثوانٍ",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 30
+      }
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "Start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 50
+      },
+      "signal": "start"
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "Stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 90
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "CR1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 140
+      },
+      "monitors": "CR1"
+    },
+    {
+      "id": "OL",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 90
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "CR1",
+      "type": "COIL",
+      "label": "CR1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 640
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 90
+      },
+      "signal": "CR1"
+    },
+    {
+      "id": "cr1a",
+      "type": "CONTACT_NO",
+      "label": "CR1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 230
+      },
+      "monitors": "CR1"
+    },
+    {
+      "id": "M2",
+      "type": "COIL",
+      "label": "M2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 230
+      },
+      "signal": "M2"
+    },
+    {
+      "id": "cr1b",
+      "type": "CONTACT_NO",
+      "label": "CR1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 480
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 340
+      },
+      "monitors": "CR1"
+    },
+    {
+      "id": "TD1",
+      "type": "TON",
+      "label": "TD1 4s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 560
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 340
+      },
+      "signal": "TD1",
+      "preset": 4000
+    },
+    {
+      "id": "td1no",
+      "type": "CONTACT_NO",
+      "label": "TD1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 320
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 450
+      },
+      "monitors": "TD1"
+    },
+    {
+      "id": "M1",
+      "type": "COIL",
+      "label": "M1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 400
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 450
+      },
+      "signal": "M1"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "a2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "a3",
+      "from": "start.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a4",
+      "from": "seal.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a5",
+      "from": "stop.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "a6",
+      "from": "OL.R",
+      "to": "CR1.L"
+    },
+    {
+      "id": "a7",
+      "from": "CR1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "b1",
+      "from": "L1.out",
+      "to": "cr1a.L"
+    },
+    {
+      "id": "b2",
+      "from": "cr1a.R",
+      "to": "M2.L"
+    },
+    {
+      "id": "b3",
+      "from": "M2.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "c1",
+      "from": "L1.out",
+      "to": "cr1b.L"
+    },
+    {
+      "id": "c2",
+      "from": "cr1b.R",
+      "to": "TD1.IN"
+    },
+    {
+      "id": "c3",
+      "from": "TD1.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "d1",
+      "from": "L1.out",
+      "to": "td1no.L"
+    },
+    {
+      "id": "d2",
+      "from": "td1no.R",
+      "to": "M1.L"
+    },
+    {
+      "id": "d3",
+      "from": "M1.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "CR1",
+      "detail": "قفل Start/Stop لـ CR1",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "s2",
+      "title": "M2 فوراً",
+      "detail": "CR1 يشغّل M2 (بدء عبر مقاومات)",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "cr1a.L"
+    },
+    {
+      "id": "s3",
+      "title": "مؤقت 4ث",
+      "detail": "CR1 يغذي TD1",
+      "wireId": "c1",
+      "from": "L1.out",
+      "to": "cr1b.L"
+    },
+    {
+      "id": "s4",
+      "title": "M1 بعد التأخير",
+      "detail": "بعد 4 ثوانٍ يعمل M1 (تجاوز المقاومات)",
+      "wireId": "d1",
+      "from": "L1.out",
+      "to": "td1no.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "OL",
+        "label": "OL",
+        "kind": "toggle",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "CR1",
+        "label": "CR1",
+        "kind": "coil"
+      },
+      {
+        "id": "M2",
+        "label": "M2",
+        "kind": "coil"
+      },
+      {
+        "id": "TD1",
+        "label": "TD1",
+        "kind": "timer"
+      },
+      {
+        "id": "M1",
+        "label": "M1",
+        "kind": "coil"
+      }
+    ],
+    "tickMs": 50,
+    "description": "Start → M2 فوراً، بعد 4ث يعمل M1."
+  },
+  "referenceImage": "/refs/q2-soft-start-motor-control-circuit.png"
+}

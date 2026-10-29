@@ -1,0 +1,456 @@
+{
+  "id": "ex-2-cylinder-a-sequence-repeated-6-times",
+  "title": "Cylinder A x6",
+  "titleAr": "أسطوانة A ×6",
+  "sourceFile": "4 - State-Based Design.ppt",
+  "page": "شريحة 16-18",
+  "purpose": "تتابع أسطوانتين مع تكرار 6",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 820,
+        "y": 20
+      }
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "Start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 40
+      },
+      "signal": "start"
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "Stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 260,
+        "y": 80
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "A0",
+      "type": "SENSOR",
+      "label": "A0",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 400,
+        "y": 40
+      },
+      "signal": "A0"
+    },
+    {
+      "id": "ExA",
+      "type": "COIL",
+      "label": "ExA",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 40
+      },
+      "signal": "ExA"
+    },
+    {
+      "id": "A1",
+      "type": "SENSOR",
+      "label": "A1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 180
+      },
+      "signal": "A1"
+    },
+    {
+      "id": "ExB",
+      "type": "COIL",
+      "label": "ExB",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 180
+      },
+      "signal": "ExB"
+    },
+    {
+      "id": "B1",
+      "type": "SENSOR",
+      "label": "B1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 180
+      },
+      "signal": "B1"
+    },
+    {
+      "id": "B0",
+      "type": "SENSOR",
+      "label": "B0",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 180
+      },
+      "signal": "B0"
+    },
+    {
+      "id": "CTU",
+      "type": "CTU",
+      "label": "CTU 6",
+      "ports": [
+        {
+          "id": "CU",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 320
+      },
+      "signal": "Done",
+      "preset": 6
+    },
+    {
+      "id": "rst",
+      "type": "PB_NO",
+      "label": "Reset",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 320
+      },
+      "signal": "reset"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "w2",
+      "from": "start.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "w3",
+      "from": "stop.R",
+      "to": "A0.L"
+    },
+    {
+      "id": "w4",
+      "from": "A0.R",
+      "to": "ExA.L"
+    },
+    {
+      "id": "w5",
+      "from": "ExA.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w6",
+      "from": "L1.out",
+      "to": "A1.L"
+    },
+    {
+      "id": "w7",
+      "from": "A1.R",
+      "to": "ExB.L"
+    },
+    {
+      "id": "w8",
+      "from": "ExB.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w9",
+      "from": "L1.out",
+      "to": "B1.L"
+    },
+    {
+      "id": "w10",
+      "from": "B1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w11",
+      "from": "L1.out",
+      "to": "B0.L"
+    },
+    {
+      "id": "w12",
+      "from": "B0.R",
+      "to": "CTU.CU"
+    },
+    {
+      "id": "w13",
+      "from": "L1.out",
+      "to": "rst.L"
+    },
+    {
+      "id": "w14",
+      "from": "rst.R",
+      "to": "CTU.R"
+    },
+    {
+      "id": "w15",
+      "from": "CTU.Q",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "ExA",
+      "detail": "Start/Stop/A0 إلى ExA",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "s2",
+      "title": "ExB",
+      "detail": "A1 يشغّل ExB",
+      "wireId": "w6",
+      "from": "L1.out",
+      "to": "A1.L"
+    },
+    {
+      "id": "s3",
+      "title": "العداد",
+      "detail": "B0 يعد على CTU",
+      "wireId": "w11",
+      "from": "L1.out",
+      "to": "B0.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "A0",
+        "label": "A0",
+        "kind": "toggle",
+        "default": true
+      },
+      {
+        "id": "A1",
+        "label": "A1",
+        "kind": "toggle"
+      },
+      {
+        "id": "B0",
+        "label": "B0",
+        "kind": "momentary"
+      },
+      {
+        "id": "B1",
+        "label": "B1",
+        "kind": "toggle"
+      },
+      {
+        "id": "reset",
+        "label": "Reset",
+        "kind": "momentary"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ExA",
+        "label": "ExA",
+        "kind": "actuator"
+      },
+      {
+        "id": "ExB",
+        "label": "ExB",
+        "kind": "actuator"
+      },
+      {
+        "id": "Done",
+        "label": "Done",
+        "kind": "counter"
+      }
+    ],
+    "tickMs": 50,
+    "description": "حاكِ الحساسات يدوياً لمحاكاة التتابع وعدّ الدورات."
+  },
+  "referenceImage": "/refs/ex-2-cylinder-a-sequence-repeated-6-times.png"
+}

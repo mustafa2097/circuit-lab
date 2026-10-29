@@ -1,0 +1,397 @@
+{
+  "id": "simple-motor-starter-with-gr-lamps",
+  "title": "Simple Motor Starter with G/R Lamps",
+  "titleAr": "بادئ محرك مع لمبات G/R",
+  "sourceFile": "6 - General Questions.pdf",
+  "page": "صفحة 1 / Q3",
+  "purpose": "تشغيل محرك مع Holding ومؤشرات تشغيل/إيقاف",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 40
+      },
+      "targetPosition": {
+        "x": 40,
+        "y": 40
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 220
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 40
+      }
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 140,
+        "y": 60
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 60
+      },
+      "signal": "start"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "M",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 140
+      },
+      "monitors": "M"
+    },
+    {
+      "id": "OL",
+      "type": "OL",
+      "label": "OL",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 100
+      },
+      "signal": "OL"
+    },
+    {
+      "id": "M",
+      "type": "COIL",
+      "label": "M",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 680
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 100
+      },
+      "signal": "M"
+    },
+    {
+      "id": "G",
+      "type": "LAMP",
+      "label": "G",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 220
+      },
+      "signal": "G"
+    },
+    {
+      "id": "McG",
+      "type": "CONTACT_NO",
+      "label": "M",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 220
+      },
+      "monitors": "M"
+    },
+    {
+      "id": "R",
+      "type": "LAMP",
+      "label": "R",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 560,
+        "y": 320
+      },
+      "signal": "R"
+    },
+    {
+      "id": "McR",
+      "type": "CONTACT_NC",
+      "label": "M",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 160,
+        "y": 600
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 320
+      },
+      "monitors": "M"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "w2",
+      "from": "stop.R",
+      "to": "start.L"
+    },
+    {
+      "id": "w3",
+      "from": "stop.R",
+      "to": "seal.L"
+    },
+    {
+      "id": "w4",
+      "from": "start.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "w5",
+      "from": "seal.R",
+      "to": "OL.L"
+    },
+    {
+      "id": "w6",
+      "from": "OL.R",
+      "to": "M.L"
+    },
+    {
+      "id": "w7",
+      "from": "M.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w8",
+      "from": "L1.out",
+      "to": "McG.L"
+    },
+    {
+      "id": "w9",
+      "from": "McG.R",
+      "to": "G.L"
+    },
+    {
+      "id": "w10",
+      "from": "G.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w11",
+      "from": "L1.out",
+      "to": "McR.L"
+    },
+    {
+      "id": "w12",
+      "from": "McR.R",
+      "to": "R.L"
+    },
+    {
+      "id": "w13",
+      "from": "R.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "رنج المحرك",
+      "detail": "L1 → stop(NC) → (start // M) → OL → M → L2",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "stop.L"
+    },
+    {
+      "id": "s2",
+      "title": "لمبة خضراء",
+      "detail": "L1 → تلامس M(NO) → G → L2",
+      "wireId": "w8",
+      "from": "L1.out",
+      "to": "McG.L"
+    },
+    {
+      "id": "s3",
+      "title": "لمبة حمراء",
+      "detail": "L1 → تلامس M(NC) → R → L2",
+      "wireId": "w11",
+      "from": "L1.out",
+      "to": "McR.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "OL",
+        "label": "Overload",
+        "kind": "toggle",
+        "default": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "M",
+        "label": "Motor M",
+        "kind": "coil"
+      },
+      {
+        "id": "G",
+        "label": "Green",
+        "kind": "lamp"
+      },
+      {
+        "id": "R",
+        "label": "Red",
+        "kind": "lamp"
+      }
+    ],
+    "tickMs": 50,
+    "description": "Start يشغّل M و G. Stop أو OL يوقف. R تضيء عندما M متوقف."
+  },
+  "referenceImage": "/refs/simple-motor-starter-with-gr-lamps.png"
+}

@@ -1,0 +1,464 @@
+{
+  "id": "motor-control-with-thermostat-interlock-cr1cr2",
+  "title": "Motor + Thermostat Interlock",
+  "titleAr": "محرك مع حماية ترموستات",
+  "sourceFile": "6 - General Questions.pdf",
+  "page": "صفحة 4 / Q10",
+  "purpose": "إيقاف المحرك عند إشارة الترموستات",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 780,
+        "y": 30
+      }
+    },
+    {
+      "id": "start",
+      "type": "PB_NO",
+      "label": "start",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 40
+      },
+      "signal": "start"
+    },
+    {
+      "id": "stop",
+      "type": "PB_NC",
+      "label": "stop",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 260,
+        "y": 80
+      },
+      "signal": "stop"
+    },
+    {
+      "id": "seal",
+      "type": "CONTACT_NO",
+      "label": "CR1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 140
+      },
+      "monitors": "CR1"
+    },
+    {
+      "id": "CR1",
+      "type": "COIL",
+      "label": "CR1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 420,
+        "y": 80
+      },
+      "signal": "CR1"
+    },
+    {
+      "id": "cr1a",
+      "type": "CONTACT_NO",
+      "label": "CR1",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 230
+      },
+      "monitors": "CR1"
+    },
+    {
+      "id": "cr2nc",
+      "type": "CONTACT_NC",
+      "label": "CR2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 230
+      },
+      "monitors": "CR2"
+    },
+    {
+      "id": "M",
+      "type": "COIL",
+      "label": "M",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 230
+      },
+      "signal": "M"
+    },
+    {
+      "id": "G",
+      "type": "LAMP",
+      "label": "G",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 540
+      },
+      "targetPosition": {
+        "x": 600,
+        "y": 230
+      },
+      "signal": "G"
+    },
+    {
+      "id": "th",
+      "type": "THERMOSTAT",
+      "label": "Thermostat",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 300
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 360
+      },
+      "signal": "thermo"
+    },
+    {
+      "id": "CR2",
+      "type": "COIL",
+      "label": "CR2",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 380
+      },
+      "targetPosition": {
+        "x": 300,
+        "y": 360
+      },
+      "signal": "CR2"
+    },
+    {
+      "id": "R",
+      "type": "LAMP",
+      "label": "R",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 320,
+        "y": 460
+      },
+      "targetPosition": {
+        "x": 460,
+        "y": 360
+      },
+      "signal": "R"
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "a2",
+      "from": "L1.out",
+      "to": "seal.L"
+    },
+    {
+      "id": "a3",
+      "from": "start.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a4",
+      "from": "seal.R",
+      "to": "stop.L"
+    },
+    {
+      "id": "a5",
+      "from": "stop.R",
+      "to": "CR1.L"
+    },
+    {
+      "id": "a6",
+      "from": "CR1.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "b1",
+      "from": "L1.out",
+      "to": "cr1a.L"
+    },
+    {
+      "id": "b2",
+      "from": "cr1a.R",
+      "to": "cr2nc.L"
+    },
+    {
+      "id": "b3",
+      "from": "cr2nc.R",
+      "to": "M.L"
+    },
+    {
+      "id": "b4",
+      "from": "M.R",
+      "to": "G.L"
+    },
+    {
+      "id": "b5",
+      "from": "G.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "c1",
+      "from": "L1.out",
+      "to": "th.L"
+    },
+    {
+      "id": "c2",
+      "from": "th.R",
+      "to": "CR2.L"
+    },
+    {
+      "id": "c3",
+      "from": "CR2.R",
+      "to": "R.L"
+    },
+    {
+      "id": "c4",
+      "from": "R.R",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "CR1",
+      "detail": "Start/Stop لـ CR1",
+      "wireId": "a1",
+      "from": "L1.out",
+      "to": "start.L"
+    },
+    {
+      "id": "s2",
+      "title": "المحرك",
+      "detail": "CR1 و !CR2 يشغّلان M و G",
+      "wireId": "b1",
+      "from": "L1.out",
+      "to": "cr1a.L"
+    },
+    {
+      "id": "s3",
+      "title": "الترموستات",
+      "detail": "Thermostat → CR2 و R",
+      "wireId": "c1",
+      "from": "L1.out",
+      "to": "th.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "start",
+        "label": "Start",
+        "kind": "momentary"
+      },
+      {
+        "id": "stop",
+        "label": "Stop",
+        "kind": "momentary"
+      },
+      {
+        "id": "thermo",
+        "label": "Thermostat",
+        "kind": "toggle"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "CR1",
+        "label": "CR1",
+        "kind": "coil"
+      },
+      {
+        "id": "CR2",
+        "label": "CR2",
+        "kind": "coil"
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "kind": "coil"
+      },
+      {
+        "id": "G",
+        "label": "G",
+        "kind": "lamp"
+      },
+      {
+        "id": "R",
+        "label": "R",
+        "kind": "lamp"
+      }
+    ],
+    "tickMs": 50,
+    "description": "الترموستات يوقف M ويضيء R."
+  },
+  "referenceImage": "/refs/motor-control-with-thermostat-interlock-cr1cr2.png"
+}

@@ -1,0 +1,387 @@
+{
+  "id": "ex-4-wrapping-process-state-based-design",
+  "title": "Wrapping Process",
+  "titleAr": "عملية تغليف",
+  "sourceFile": "4 - State-Based Design.ppt",
+  "page": "شريحة 22-23",
+  "purpose": "تثبيت → ورق → طي → شريط → تحرير",
+  "components": [
+    {
+      "id": "L1",
+      "type": "RAIL_L",
+      "label": "L1",
+      "ports": [
+        {
+          "id": "out",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "targetPosition": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "L2",
+      "type": "RAIL_R",
+      "label": "L2",
+      "ports": [
+        {
+          "id": "in",
+          "side": "left"
+        }
+      ],
+      "trayPosition": {
+        "x": 20,
+        "y": 200
+      },
+      "targetPosition": {
+        "x": 800,
+        "y": 20
+      }
+    },
+    {
+      "id": "ps",
+      "type": "SENSOR",
+      "label": "Part",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 40
+      },
+      "signal": "Part"
+    },
+    {
+      "id": "Hold",
+      "type": "COIL",
+      "label": "Hold",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 40
+      },
+      "signal": "Hold"
+    },
+    {
+      "id": "Paper",
+      "type": "COIL",
+      "label": "Paper",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 40
+      },
+      "signal": "Paper"
+    },
+    {
+      "id": "TON1",
+      "type": "TON",
+      "label": "1s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 40,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 600,
+        "y": 40
+      },
+      "signal": "T1",
+      "preset": 1000
+    },
+    {
+      "id": "Fold",
+      "type": "COIL",
+      "label": "Fold",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 280
+      },
+      "targetPosition": {
+        "x": 120,
+        "y": 180
+      },
+      "signal": "Fold"
+    },
+    {
+      "id": "TON2",
+      "type": "TON",
+      "label": "0.5s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 360
+      },
+      "targetPosition": {
+        "x": 280,
+        "y": 180
+      },
+      "signal": "T2",
+      "preset": 500
+    },
+    {
+      "id": "Tape",
+      "type": "COIL",
+      "label": "Tape",
+      "ports": [
+        {
+          "id": "L",
+          "side": "left"
+        },
+        {
+          "id": "R",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 440
+      },
+      "targetPosition": {
+        "x": 440,
+        "y": 180
+      },
+      "signal": "Tape"
+    },
+    {
+      "id": "TON3",
+      "type": "TON",
+      "label": "0.75s",
+      "ports": [
+        {
+          "id": "IN",
+          "side": "left"
+        },
+        {
+          "id": "Q",
+          "side": "right"
+        }
+      ],
+      "trayPosition": {
+        "x": 180,
+        "y": 520
+      },
+      "targetPosition": {
+        "x": 600,
+        "y": 180
+      },
+      "signal": "T3",
+      "preset": 750
+    }
+  ],
+  "referenceWires": [
+    {
+      "id": "w1",
+      "from": "L1.out",
+      "to": "ps.L"
+    },
+    {
+      "id": "w2",
+      "from": "ps.R",
+      "to": "Hold.L"
+    },
+    {
+      "id": "w3",
+      "from": "Hold.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w4",
+      "from": "L1.out",
+      "to": "Paper.L"
+    },
+    {
+      "id": "w5",
+      "from": "Paper.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w6",
+      "from": "L1.out",
+      "to": "TON1.IN"
+    },
+    {
+      "id": "w7",
+      "from": "TON1.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "w8",
+      "from": "L1.out",
+      "to": "Fold.L"
+    },
+    {
+      "id": "w9",
+      "from": "Fold.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w10",
+      "from": "L1.out",
+      "to": "TON2.IN"
+    },
+    {
+      "id": "w11",
+      "from": "TON2.Q",
+      "to": "L2.in"
+    },
+    {
+      "id": "w12",
+      "from": "L1.out",
+      "to": "Tape.L"
+    },
+    {
+      "id": "w13",
+      "from": "Tape.R",
+      "to": "L2.in"
+    },
+    {
+      "id": "w14",
+      "from": "L1.out",
+      "to": "TON3.IN"
+    },
+    {
+      "id": "w15",
+      "from": "TON3.Q",
+      "to": "L2.in"
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "title": "Hold",
+      "detail": "حساس القطعة يشغّل Hold",
+      "wireId": "w1",
+      "from": "L1.out",
+      "to": "ps.L"
+    },
+    {
+      "id": "s2",
+      "title": "التسلسل الزمني",
+      "detail": "Paper/Fold/Tape مع مؤقتاتها كما بالملزمة",
+      "wireId": "w4",
+      "from": "L1.out",
+      "to": "Paper.L"
+    }
+  ],
+  "simulation": {
+    "inputs": [
+      {
+        "id": "Part",
+        "label": "Part sensor",
+        "kind": "toggle"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "Hold",
+        "label": "Hold",
+        "kind": "actuator"
+      },
+      {
+        "id": "Paper",
+        "label": "Paper",
+        "kind": "actuator"
+      },
+      {
+        "id": "Fold",
+        "label": "Fold",
+        "kind": "actuator"
+      },
+      {
+        "id": "Tape",
+        "label": "Tape",
+        "kind": "actuator"
+      },
+      {
+        "id": "T1",
+        "label": "T1",
+        "kind": "timer"
+      },
+      {
+        "id": "T2",
+        "label": "T2",
+        "kind": "timer"
+      },
+      {
+        "id": "T3",
+        "label": "T3",
+        "kind": "timer"
+      }
+    ],
+    "tickMs": 50,
+    "description": "فعّل Part ثم راقب المخارج والمؤقتات."
+  },
+  "referenceImage": "/refs/ex-4-wrapping-process-state-based-design.png"
+}
