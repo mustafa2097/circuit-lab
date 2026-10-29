@@ -11,6 +11,9 @@ const arabic = IBM_Plex_Sans_Arabic({
 export const metadata: Metadata = {
   title: "مختبر دوائر PLC",
   description: "محاكي تركيب وتشغيل دوائر الريليه وPLC مطابق للملزمة",
+  icons: {
+    icon: [{ url: "/favicon.ico" }, { url: "/icon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
