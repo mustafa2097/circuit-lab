@@ -44,7 +44,7 @@ export function PartsNav({
                 title={`إنزال ${p.label} إلى اللوحة`}
               >
                 <div className="text-[11px] font-semibold text-gray-500">
-                  {meta.symbol}
+                  {p.symbol ?? meta.symbol}
                 </div>
                 <div className="text-sm font-semibold text-gray-900">{p.label}</div>
                 <div className="mt-0.5 text-[10px] text-gray-400">{meta.titleAr}</div>

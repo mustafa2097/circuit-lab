@@ -259,13 +259,52 @@ export function tick(
       .map((c) => [c.signal!, next[c.signal!]])
   )};
 
-  // 2) Coils / lamps once (seal-in & oscillation use previous coil bits)
+  // 2) Ordinary coils / lamps. Contacts still see the previous coil image,
+  // while timer Q bits in `mid` are already this scan's values.
   for (const comp of circuit.components) {
-    if ((comp.type === "COIL" || comp.type === "LAMP") && comp.signal) {
-      // Prefer mid for timer Q conduction; coils still from prev via mid overlay
-      const on = powered(circuit, wires, mid, `${comp.id}.L`);
-      next[comp.signal] = on;
+    if (
+      (comp.type === "COIL" || comp.type === "LAMP") &&
+      comp.signal &&
+      !comp.coilAction
+    ) {
+      next[comp.signal] = powered(circuit, wires, mid, `${comp.id}.L`);
     }
+  }
+
+  // 3) Set/Reset latches. CR (and any other coil written above) is visible,
+  // so a lower Reset rung can use the timer coil from this same scan.
+  // Reset wins when Set and Reset are both true, matching top-to-bottom order.
+  const latched = { ...mid };
+  for (const comp of circuit.components) {
+    if (
+      (comp.type === "COIL" || comp.type === "LAMP") &&
+      comp.signal &&
+      !comp.coilAction
+    ) {
+      latched[comp.signal] = !!next[comp.signal];
+    }
+  }
+
+  const srSignals = new Set(
+    circuit.components
+      .filter((c) => c.coilAction && c.signal)
+      .map((c) => c.signal as string)
+  );
+  for (const sig of srSignals) {
+    let value = !!prev[sig];
+    const sets = circuit.components.filter(
+      (c) => c.coilAction === "set" && c.signal === sig
+    );
+    const resets = circuit.components.filter(
+      (c) => c.coilAction === "reset" && c.signal === sig
+    );
+    if (sets.some((c) => powered(circuit, wires, latched, `${c.id}.L`))) {
+      value = true;
+    }
+    if (resets.some((c) => powered(circuit, wires, latched, `${c.id}.L`))) {
+      value = false;
+    }
+    next[sig] = value;
   }
 
   return { ...state, signals: next, timerEt, counterCv, edges };

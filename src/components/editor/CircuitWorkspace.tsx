@@ -54,6 +54,7 @@ function componentToNode(c: CircuitComponent): Node {
       label: c.label,
       partType: c.type,
       ports: c.ports,
+      symbol: c.symbol,
       live: false,
       highlight: false,
     } satisfies PartNodeData,
@@ -121,7 +122,9 @@ function WorkspaceInner({ circuit }: { circuit: CircuitDefinition }) {
       nodes.map((n) => {
         const c = circuit.components.find((x) => x.id === n.id);
         const key = c?.signal;
-        const live = key ? !!sim.signals[key] : false;
+        // A Reset coil shares the latched bit, but it is not "on" while that bit is held.
+        const live =
+          c?.coilAction === "reset" ? false : key ? !!sim.signals[key] : false;
         const prev = n.data as PartNodeData;
         return {
           ...n,
