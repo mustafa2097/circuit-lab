@@ -32,6 +32,10 @@ export interface CircuitComponent {
   /** For aux contacts: which coil/signal they follow */
   monitors?: string;
   normallyClosed?: boolean;
+  /** Set latches the bit on; Reset clears it. Omit for a normal coil. */
+  coilAction?: "set" | "reset";
+  /** Overrides the library symbol, for example "( S )" or "( R )". */
+  symbol?: string;
   /** Timer/counter preset in ms or counts */
   preset?: number;
   ports: PortDef[];

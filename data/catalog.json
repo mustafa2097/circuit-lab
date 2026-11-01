@@ -250,7 +250,7 @@
       "page": "شريحة 6-7",
       "category": "دائرة PLC",
       "kind": "تحكم هوائي بمشبك مع مؤقت",
-      "purpose": "تمديد أسطوانة A والبقاء 15 ثانية ثم الرجوع باستخدام مؤقت",
+      "purpose": "Start مع A0 يمدد الأسطوانة (Set). عند A1 تبقى 15 ثانية ثم ترجع (Reset)",
       "slug": "electro-pneumatic-clamping-mechanism-tp-example",
       "skipped": false,
       "skipReason": null,

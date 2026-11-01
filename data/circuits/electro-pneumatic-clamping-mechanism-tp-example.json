@@ -4,371 +4,197 @@
   "titleAr": "مشبك هوائي مع مؤقت نبضة 15ث",
   "sourceFile": "3 - Timers and Counters in PLC Based Control.ppt",
   "page": "شريحة 6-7",
-  "purpose": "تمديد أسطوانة والبقاء 15 ثانية ثم الرجوع",
+  "purpose": "Start مع A0 يمدد الأسطوانة (Set). عند A1 تبقى 15 ثانية عبر مؤقت نبضة ثم ترجع (Reset).",
+  "referenceImage": "/refs/electro-pneumatic-clamping-mechanism-tp-example.png",
   "components": [
     {
       "id": "L1",
       "type": "RAIL_L",
       "label": "L1",
-      "ports": [
-        {
-          "id": "out",
-          "side": "right"
-        }
-      ],
-      "trayPosition": {
-        "x": 20,
-        "y": 20
-      },
-      "targetPosition": {
-        "x": 30,
-        "y": 30
-      }
+      "ports": [{ "id": "out", "side": "right" }],
+      "trayPosition": { "x": 20, "y": 20 },
+      "targetPosition": { "x": 24, "y": 36 }
     },
     {
       "id": "L2",
       "type": "RAIL_R",
       "label": "L2",
-      "ports": [
-        {
-          "id": "in",
-          "side": "left"
-        }
-      ],
-      "trayPosition": {
-        "x": 20,
-        "y": 200
-      },
-      "targetPosition": {
-        "x": 760,
-        "y": 30
-      }
+      "ports": [{ "id": "in", "side": "left" }],
+      "trayPosition": { "x": 20, "y": 180 },
+      "targetPosition": { "x": 860, "y": 36 }
     },
     {
       "id": "start",
       "type": "PB_NO",
       "label": "Start",
+      "signal": "start",
       "ports": [
-        {
-          "id": "L",
-          "side": "left"
-        },
-        {
-          "id": "R",
-          "side": "right"
-        }
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 40,
-        "y": 300
-      },
-      "targetPosition": {
-        "x": 140,
-        "y": 40
-      },
-      "signal": "start"
+      "trayPosition": { "x": 40, "y": 280 },
+      "targetPosition": { "x": 140, "y": 48 }
     },
     {
       "id": "A0",
       "type": "SENSOR",
       "label": "A0",
+      "signal": "A0",
       "ports": [
-        {
-          "id": "L",
-          "side": "left"
-        },
-        {
-          "id": "R",
-          "side": "right"
-        }
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 40,
-        "y": 380
-      },
-      "targetPosition": {
-        "x": 280,
-        "y": 40
-      },
-      "signal": "A0"
+      "trayPosition": { "x": 180, "y": 280 },
+      "targetPosition": { "x": 310, "y": 48 }
     },
     {
-      "id": "ExA",
+      "id": "exSet",
       "type": "COIL",
       "label": "ExA",
+      "symbol": "( S )",
+      "signal": "ExA",
+      "coilAction": "set",
       "ports": [
-        {
-          "id": "L",
-          "side": "left"
-        },
-        {
-          "id": "R",
-          "side": "right"
-        }
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 40,
-        "y": 460
-      },
-      "targetPosition": {
-        "x": 440,
-        "y": 40
-      },
-      "signal": "ExA"
+      "trayPosition": { "x": 320, "y": 280 },
+      "targetPosition": { "x": 500, "y": 48 }
     },
     {
       "id": "a1",
       "type": "SENSOR",
       "label": "A1",
+      "signal": "A1",
       "ports": [
-        {
-          "id": "L",
-          "side": "left"
-        },
-        {
-          "id": "R",
-          "side": "right"
-        }
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 180,
-        "y": 300
-      },
-      "targetPosition": {
-        "x": 140,
-        "y": 180
-      },
-      "signal": "A1"
+      "trayPosition": { "x": 40, "y": 380 },
+      "targetPosition": { "x": 140, "y": 190 }
     },
     {
       "id": "TP",
       "type": "TP",
       "label": "TP 15s",
+      "signal": "TP1",
+      "preset": 15000,
       "ports": [
-        {
-          "id": "IN",
-          "side": "left"
-        },
-        {
-          "id": "Q",
-          "side": "right"
-        }
+        { "id": "IN", "side": "left" },
+        { "id": "Q", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 180,
-        "y": 380
-      },
-      "targetPosition": {
-        "x": 300,
-        "y": 180
-      },
-      "signal": "Hold",
-      "preset": 15000
+      "trayPosition": { "x": 180, "y": 380 },
+      "targetPosition": { "x": 320, "y": 180 }
     },
     {
-      "id": "hold",
-      "type": "CONTACT_NO",
-      "label": "Hold",
+      "id": "cr",
+      "type": "COIL",
+      "label": "CR",
+      "signal": "CR",
       "ports": [
-        {
-          "id": "L",
-          "side": "left"
-        },
-        {
-          "id": "R",
-          "side": "right"
-        }
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 180,
-        "y": 460
-      },
-      "targetPosition": {
-        "x": 460,
-        "y": 180
-      },
-      "monitors": "Hold"
+      "trayPosition": { "x": 320, "y": 380 },
+      "targetPosition": { "x": 520, "y": 190 }
     },
     {
-      "id": "exSeal",
-      "type": "CONTACT_NO",
-      "label": "ExA",
+      "id": "a1b",
+      "type": "SENSOR",
+      "label": "A1",
+      "signal": "A1",
       "ports": [
-        {
-          "id": "L",
-          "side": "left"
-        },
-        {
-          "id": "R",
-          "side": "right"
-        }
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 320,
-        "y": 300
-      },
-      "targetPosition": {
-        "x": 140,
-        "y": 300
-      },
-      "monitors": "ExA"
+      "trayPosition": { "x": 40, "y": 480 },
+      "targetPosition": { "x": 140, "y": 330 }
     },
     {
-      "id": "holdnc",
+      "id": "crnc",
       "type": "CONTACT_NC",
-      "label": "HoldDone",
+      "label": "CR",
+      "monitors": "CR",
       "ports": [
-        {
-          "id": "L",
-          "side": "left"
-        },
-        {
-          "id": "R",
-          "side": "right"
-        }
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
       ],
-      "trayPosition": {
-        "x": 320,
-        "y": 380
-      },
-      "targetPosition": {
-        "x": 300,
-        "y": 300
-      },
-      "monitors": "HoldDone"
+      "trayPosition": { "x": 180, "y": 480 },
+      "targetPosition": { "x": 320, "y": 330 }
+    },
+    {
+      "id": "exRst",
+      "type": "COIL",
+      "label": "ExA",
+      "symbol": "( R )",
+      "signal": "ExA",
+      "coilAction": "reset",
+      "ports": [
+        { "id": "L", "side": "left" },
+        { "id": "R", "side": "right" }
+      ],
+      "trayPosition": { "x": 320, "y": 480 },
+      "targetPosition": { "x": 520, "y": 330 }
     }
   ],
   "referenceWires": [
-    {
-      "id": "w1",
-      "from": "L1.out",
-      "to": "start.L"
-    },
-    {
-      "id": "w2",
-      "from": "start.R",
-      "to": "ExA.L"
-    },
-    {
-      "id": "w3",
-      "from": "ExA.R",
-      "to": "L2.in"
-    },
-    {
-      "id": "w4",
-      "from": "L1.out",
-      "to": "a1.L"
-    },
-    {
-      "id": "w5",
-      "from": "a1.R",
-      "to": "TP.IN"
-    },
-    {
-      "id": "w6",
-      "from": "TP.Q",
-      "to": "L2.in"
-    },
-    {
-      "id": "w7",
-      "from": "L1.out",
-      "to": "exSeal.L"
-    },
-    {
-      "id": "w8",
-      "from": "exSeal.R",
-      "to": "hold.L"
-    },
-    {
-      "id": "w9",
-      "from": "hold.R",
-      "to": "ExA.L"
-    },
-    {
-      "id": "w10",
-      "from": "L1.out",
-      "to": "A0.L"
-    },
-    {
-      "id": "w11",
-      "from": "A0.R",
-      "to": "L2.in"
-    },
-    {
-      "id": "w12",
-      "from": "L1.out",
-      "to": "holdnc.L"
-    },
-    {
-      "id": "w13",
-      "from": "holdnc.R",
-      "to": "L2.in"
-    }
+    { "id": "w1", "from": "L1.out", "to": "start.L" },
+    { "id": "w2", "from": "start.R", "to": "A0.L" },
+    { "id": "w3", "from": "A0.R", "to": "exSet.L" },
+    { "id": "w4", "from": "exSet.R", "to": "L2.in" },
+    { "id": "w5", "from": "L1.out", "to": "a1.L" },
+    { "id": "w6", "from": "a1.R", "to": "TP.IN" },
+    { "id": "w7", "from": "TP.Q", "to": "cr.L" },
+    { "id": "w8", "from": "cr.R", "to": "L2.in" },
+    { "id": "w9", "from": "L1.out", "to": "a1b.L" },
+    { "id": "w10", "from": "a1b.R", "to": "crnc.L" },
+    { "id": "w11", "from": "crnc.R", "to": "exRst.L" },
+    { "id": "w12", "from": "exRst.R", "to": "L2.in" }
   ],
   "steps": [
     {
       "id": "s1",
-      "title": "التمديد",
-      "detail": "Start يشغّل ExA",
+      "title": "ضع الأعمدة",
+      "detail": "ضع عمود L1 وعمود L2.",
+      "placeComponentId": "L1"
+    },
+    {
+      "id": "s2",
+      "title": "مسار التمديد Set",
+      "detail": "اربط L1 → Start → A0 → ملف ExA (S) → L2. التمديد لا يتم إلا والأسطوانة راجعة.",
       "wireId": "w1",
       "from": "L1.out",
       "to": "start.L"
     },
     {
-      "id": "s2",
-      "title": "المؤقت",
-      "detail": "عند A1 يبدأ TP 15s",
-      "wireId": "w4",
+      "id": "s3",
+      "title": "مؤقت النبضة",
+      "detail": "اربط L1 → A1 → TP 15s → ملف CR → L2. عند وصول الأسطوانة تبدأ نبضة 15 ثانية.",
+      "wireId": "w5",
       "from": "L1.out",
       "to": "a1.L"
     },
     {
-      "id": "s3",
-      "title": "الإبقاء",
-      "detail": "Hold يبقي ExA أثناء النبضة",
-      "wireId": "w7",
+      "id": "s4",
+      "title": "مسار الرجوع Reset",
+      "detail": "اربط L1 → A1 → تلامس CR المغلق → ملف ExA (R) → L2. الرجوع يتم بعد انتهاء النبضة.",
+      "wireId": "w9",
       "from": "L1.out",
-      "to": "exSeal.L"
+      "to": "a1b.L"
     }
   ],
   "simulation": {
     "inputs": [
-      {
-        "id": "start",
-        "label": "Start",
-        "kind": "momentary"
-      },
-      {
-        "id": "A0",
-        "label": "A0",
-        "kind": "toggle",
-        "default": true
-      },
-      {
-        "id": "A1",
-        "label": "A1",
-        "kind": "toggle"
-      },
-      {
-        "id": "HoldDone",
-        "label": "HoldDone",
-        "kind": "toggle"
-      }
+      { "id": "start", "label": "Start", "kind": "momentary" },
+      { "id": "A0", "label": "A0", "kind": "toggle", "default": true },
+      { "id": "A1", "label": "A1", "kind": "toggle" }
     ],
     "outputs": [
-      {
-        "id": "ExA",
-        "label": "ExA",
-        "kind": "actuator"
-      },
-      {
-        "id": "Hold",
-        "label": "Hold/TP",
-        "kind": "timer"
-      }
+      { "id": "ExA", "label": "ExA", "kind": "actuator" },
+      { "id": "CR", "label": "CR", "kind": "coil" },
+      { "id": "TP1", "label": "TP", "kind": "timer" }
     ],
     "tickMs": 50,
-    "description": "Start يمدد. عند A1 يبدأ الاحتفاظ 15ث."
-  },
-  "referenceImage": "/refs/electro-pneumatic-clamping-mechanism-tp-example.png"
+    "description": "A0 مغلق في وضع الرجوع. اضغط Start فيُقفل ExA (تمديد). أطفئ A0 وشغّل A1 عند نهاية المشوار: تبقى الأسطوانة 15 ثانية ثم يُصفَّر ExA وتعود."
+  }
 }
